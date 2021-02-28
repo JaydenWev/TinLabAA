@@ -1,2 +1,0 @@
-# TinLabAA
-TinLab groeps deel
