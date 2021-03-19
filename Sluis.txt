@@ -1,0 +1,7 @@
+Sluis:
+
+Dicht:
+	Rotterdam		Dordrecht
+	3.0m			2.9m
+	2.6m			2.3m	<--	Na 7 jaar niet dicht
+
