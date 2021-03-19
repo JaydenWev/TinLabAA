@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
+<nta>
+	<declaration>// Place global declarations here.</declaration>
+	<template>
+		<name x="5" y="5">Sluis</name>
+		<declaration>// Place local declarations here.
+
+const int maxWater = 5;
+const int sluitGrens = 3;
+
+clock x;
+
+int[0,maxWater] wStand;
+</declaration>
+		<location id="id0" x="204" y="-34">
+		</location>
+		<location id="id1" x="204" y="-136">
+		</location>
+		<location id="id2" x="204" y="-238">
+		</location>
+		<location id="id3" x="68" y="-136">
+			<name x="34" y="-170">Open</name>
+		</location>
+		<location id="id4" x="374" y="-238">
+			<name x="348" y="-272">Dicht</name>
+		</location>
+		<init ref="id3"/>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id4"/>
+			<label kind="guard" x="450" y="-255">wStand&gt;=sluitGrens</label>
+			<nail x="442" y="-170"/>
+			<nail x="442" y="-306"/>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id4"/>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id3"/>
+			<nail x="170" y="34"/>
+			<nail x="102" y="34"/>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id0"/>
+			<label kind="guard" x="102" y="-60">waterStand&lt;=1</label>
+			<nail x="102" y="-34"/>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id1"/>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id2"/>
+			<label kind="guard" x="51" y="-263">wStand&gt;=sluitGrens</label>
+			<nail x="102" y="-238"/>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+//Process = Template();
+// List one or more processes to be composed into a system.
+system Sluis;
+    </system>
+	<queries>
+		<query>
+			<formula></formula>
+			<comment></comment>
+		</query>
+	</queries>
+</nta>
