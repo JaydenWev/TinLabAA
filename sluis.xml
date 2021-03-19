@@ -1,73 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
 <nta>
-	<declaration>// Place global declarations here.</declaration>
+	<declaration>// Place global declarations here.
+
+const int maxWater = 5;
+const int maxWind = 120;
+const int sluitGrens = 3;// 3 rotterdam, 2.9 dordrecht (boven NAP)
+const int windGrens = 50;
+
+int[-1,maxWater] waterStand;
+int[0,maxWind] windKracht;
+</declaration>
 	<template>
 		<name x="5" y="5">Sluis</name>
 		<declaration>// Place local declarations here.
 
-const int maxWater = 5;
-const int sluitGrens = 3;
-
 clock x;
 
-int[0,maxWater] wStand;
+
 </declaration>
-		<location id="id0" x="204" y="-34">
+		<location id="id0" x="646" y="-136">
 		</location>
-		<location id="id1" x="204" y="-136">
+		<location id="id1" x="646" y="-272">
 		</location>
-		<location id="id2" x="204" y="-238">
+		<location id="id2" x="544" y="-204">
 		</location>
-		<location id="id3" x="68" y="-136">
-			<name x="34" y="-170">Open</name>
+		<location id="id3" x="408" y="-102">
+			<name x="382" y="-153">Open</name>
 		</location>
-		<location id="id4" x="374" y="-238">
-			<name x="348" y="-272">Dicht</name>
+		<location id="id4" x="918" y="-204">
+			<name x="892" y="-238">Dicht</name>
 		</location>
 		<init ref="id3"/>
 		<transition>
-			<source ref="id4"/>
-			<target ref="id4"/>
-			<label kind="guard" x="450" y="-255">wStand&gt;=sluitGrens</label>
-			<nail x="442" y="-170"/>
-			<nail x="442" y="-306"/>
+			<source ref="id3"/>
+			<target ref="id3"/>
+			<label kind="guard" x="246" y="-102">waterStand&gt;=1</label>
+			<nail x="340" y="-34"/>
+			<nail x="340" y="-170"/>
 		</transition>
 		<transition>
 			<source ref="id2"/>
-			<target ref="id4"/>
-		</transition>
-		<transition>
-			<source ref="id0"/>
-			<target ref="id3"/>
-			<nail x="170" y="34"/>
-			<nail x="102" y="34"/>
-		</transition>
-		<transition>
-			<source ref="id3"/>
 			<target ref="id0"/>
-			<label kind="guard" x="102" y="-60">waterStand&lt;=1</label>
-			<nail x="102" y="-34"/>
+			<nail x="578" y="-136"/>
 		</transition>
 		<transition>
-			<source ref="id3"/>
+			<source ref="id2"/>
 			<target ref="id1"/>
+			<nail x="578" y="-272"/>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id4"/>
+			<label kind="guard" x="994" y="-221">waterStand&gt;=sluitGrens</label>
+			<nail x="986" y="-136"/>
+			<nail x="986" y="-272"/>
 		</transition>
 		<transition>
 			<source ref="id3"/>
 			<target ref="id2"/>
-			<label kind="guard" x="51" y="-263">wStand&gt;=sluitGrens</label>
-			<nail x="102" y="-238"/>
+			<label kind="guard" x="365" y="-238">waterStand&gt;=sluitGrens</label>
+			<nail x="442" y="-204"/>
+		</transition>
+	</template>
+	<template>
+		<name>waterGenerator</name>
+		<declaration>clock x;</declaration>
+		<location id="id5" x="-238" y="0">
+		</location>
+		<init ref="id5"/>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id5"/>
+			<label kind="assignment" x="-161" y="-8">x:=0</label>
+			<nail x="-170" y="68"/>
+			<nail x="-170" y="-68"/>
+		</transition>
+	</template>
+	<template>
+		<name>windGenerator</name>
+		<declaration>
+clock x;</declaration>
+		<location id="id6" x="-238" y="0">
+		</location>
+		<init ref="id6"/>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id6"/>
+			<label kind="assignment" x="-162" y="-8">x:=0</label>
+			<nail x="-170" y="68"/>
+			<nail x="-170" y="-68"/>
 		</transition>
 	</template>
 	<system>// Place template instantiations here.
 //Process = Template();
 // List one or more processes to be composed into a system.
-system Sluis;
+system Sluis, waterGenerator, windGenerator;
     </system>
 	<queries>
 		<query>
-			<formula></formula>
+			<formula>A[] deadlock</formula>
 			<comment></comment>
 		</query>
 	</queries>
