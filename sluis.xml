@@ -5,12 +5,14 @@
 
 const int maxWater = 5;
 const int maxWind = 120;
-const int sluitGrens = 3;// 3 rotterdam, 2.9 dordrecht (boven NAP)
-const int windGrens = 50;
+const int sluitGrens = 3; // 3 rotterdam, 2.9 dordrecht (boven NAP)
+const int windGrens = 50; // onbekend 50 gebruiken als indicatie
 
 int[-1,maxWater] waterStand;
 int[0,maxWind] windKracht;
-</declaration>
+
+//na 7 jaar niet dicht de grens verlagen (is het mogelijk om daarvoor een clock te gebruiken)
+clock y;</declaration>
 	<template>
 		<name x="5" y="5">Sluis</name>
 		<declaration>// Place local declarations here.
@@ -19,59 +21,91 @@ clock x;
 
 
 </declaration>
-		<location id="id0" x="646" y="-136">
+		<location id="id0" x="213" y="0">
 		</location>
-		<location id="id1" x="646" y="-272">
+		<location id="id1" x="111" y="-68">
 		</location>
-		<location id="id2" x="544" y="-204">
+		<location id="id2" x="213" y="-170">
+			<name x="203" y="-204">Dicht</name>
+			<label kind="comments" x="111" y="-195">veel water
+veel wind</label>
 		</location>
-		<location id="id3" x="408" y="-102">
-			<name x="382" y="-153">Open</name>
+		<location id="id3" x="213" y="-340">
 		</location>
-		<location id="id4" x="918" y="-204">
-			<name x="892" y="-238">Dicht</name>
+		<location id="id4" x="111" y="-272">
 		</location>
-		<init ref="id3"/>
+		<location id="id5" x="-25" y="-170">
+			<name x="-51" y="-221">Open</name>
+		</location>
+		<init ref="id5"/>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id2"/>
+			<label kind="guard" x="289" y="-170">waterStand&gt;=sluitGrens</label>
+			<nail x="264" y="-102"/>
+			<nail x="264" y="-238"/>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id5"/>
+			<nail x="179" y="68"/>
+			<nail x="-25" y="68"/>
+		</transition>
 		<transition>
 			<source ref="id3"/>
-			<target ref="id3"/>
-			<label kind="guard" x="246" y="-102">waterStand&gt;=1</label>
-			<nail x="340" y="-34"/>
-			<nail x="340" y="-170"/>
+			<target ref="id5"/>
+			<nail x="179" y="-408"/>
+			<nail x="-25" y="-408"/>
 		</transition>
 		<transition>
-			<source ref="id2"/>
+			<source ref="id1"/>
+			<target ref="id2"/>
+		</transition>
+		<transition>
+			<source ref="id1"/>
 			<target ref="id0"/>
-			<nail x="578" y="-136"/>
+			<nail x="145" y="0"/>
 		</transition>
 		<transition>
-			<source ref="id2"/>
+			<source ref="id5"/>
 			<target ref="id1"/>
-			<nail x="578" y="-272"/>
+			<label kind="comments" x="17" y="-102">veel wind</label>
+			<nail x="9" y="-68"/>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id5"/>
+			<label kind="guard" x="-187" y="-170">waterStand&gt;=1</label>
+			<nail x="-93" y="-102"/>
+			<nail x="-93" y="-238"/>
 		</transition>
 		<transition>
 			<source ref="id4"/>
-			<target ref="id4"/>
-			<label kind="guard" x="994" y="-221">waterStand&gt;=sluitGrens</label>
-			<nail x="986" y="-136"/>
-			<nail x="986" y="-272"/>
+			<target ref="id2"/>
 		</transition>
 		<transition>
-			<source ref="id3"/>
-			<target ref="id2"/>
-			<label kind="guard" x="365" y="-238">waterStand&gt;=sluitGrens</label>
-			<nail x="442" y="-204"/>
+			<source ref="id4"/>
+			<target ref="id3"/>
+			<label kind="comments" x="102" y="-391">veel water
+weinig wind</label>
+			<nail x="145" y="-340"/>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id4"/>
+			<label kind="comments" x="17" y="-263">veel water</label>
+			<nail x="9" y="-272"/>
 		</transition>
 	</template>
 	<template>
 		<name>waterGenerator</name>
 		<declaration>clock x;</declaration>
-		<location id="id5" x="-238" y="0">
+		<location id="id6" x="-238" y="0">
 		</location>
-		<init ref="id5"/>
+		<init ref="id6"/>
 		<transition>
-			<source ref="id5"/>
-			<target ref="id5"/>
+			<source ref="id6"/>
+			<target ref="id6"/>
 			<label kind="assignment" x="-161" y="-8">x:=0</label>
 			<nail x="-170" y="68"/>
 			<nail x="-170" y="-68"/>
@@ -81,12 +115,13 @@ clock x;
 		<name>windGenerator</name>
 		<declaration>
 clock x;</declaration>
-		<location id="id6" x="-238" y="0">
+		<location id="id7" x="-238" y="0">
 		</location>
-		<init ref="id6"/>
+		<init ref="id7"/>
 		<transition>
-			<source ref="id6"/>
-			<target ref="id6"/>
+			<source ref="id7"/>
+			<target ref="id7"/>
+			<label kind="select" x="-161" y="-42">windkracht : int[0, maxWind]</label>
 			<label kind="assignment" x="-162" y="-8">x:=0</label>
 			<nail x="-170" y="68"/>
 			<nail x="-170" y="-68"/>
