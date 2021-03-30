@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.2.22)  26 MAR 2021 13:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.2.22)  29 MAR 2021 21:48
 entering extended mode
 **./verslag.tex
 (verslag.tex
@@ -165,10 +165,15 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 [1]
 
 LaTeX Warning: Citation `royce1987managing' on page 2 undefined on input line 3
-4.
+6.
 
 
-LaTeX Warning: Citation `modelchecking' on page 2 undefined on input line 34.
+LaTeX Warning: Citation `modelchecking' on page 2 undefined on input line 36.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--37
+
+ []
 
 [2]
 No file verslag.bbl.
@@ -180,17 +185,17 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  2473 strings out of 479618
  37129 string characters out of 2874902
- 329339 words of memory out of 3000000
+ 330339 words of memory out of 3000000
  19636 multiletter control sequences out of 15000+200000
  406135 words of font info for 36 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,4n,78p,211b,161s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 72i,4n,78p,315b,161s stack positions out of 5000i,500n,10000p,200000b,50000s
 <D:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:/Progra
 m Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Program Files/MiKT
 eX/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Program Files/MiKTeX/fonts/type
 1/public/amsfonts/cm/cmss10.pfb><D:/Program Files/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmssbx10.pfb>
-Output written on verslag.pdf (3 pages, 68099 bytes).
+Output written on verslag.pdf (3 pages, 72145 bytes).
 PDF statistics:
  35 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
