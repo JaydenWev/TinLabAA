@@ -1,104 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
 <nta>
-	<declaration>// Place global declarations here.</declaration>
+	<declaration>// Place global declarations here.
+
+// kanalen deur
+chan open, close;
+// kanalen water
+chan waterOke, waterUp, waterDown;
+
+//Deur
+const int doors=2;
+typedef int [0,doors-1] id_d;
+//??hulp nodig voor het gebruiken van sync bij een template array??
+
+
+const int upperLevel = 90;
+const int lowerLevel = 10;
+
+/*TODO
+van waterLevel een shared variable maken
+    maar is dit wel nodig met gebruik van sync, volgensmij niet
+
+*/</declaration>
 	<template>
 		<name x="5" y="5">Main</name>
 		<declaration>// Place local declarations here.</declaration>
-		<location id="id0" x="-153" y="187">
-			<label kind="comments" x="-212" y="187">Open
+		<location id="id0" x="-510" y="68">
+			<label kind="comments" x="-535" y="-59">Open
 Laag
 Dicht</label>
 		</location>
-		<location id="id1" x="-153" y="94">
-			<label kind="comments" x="-272" y="68">Dicht
+		<location id="id1" x="-170" y="0">
+			<label kind="comments" x="-195" y="-144">Dicht
 Legen
 Dicht</label>
 		</location>
-		<location id="id2" x="-8" y="9">
-			<label kind="comments" x="-25" y="-68">Dicht
+		<location id="id2" x="170" y="68">
+			<label kind="comments" x="153" y="-59">Dicht
 Hoog
 Open</label>
 		</location>
-		<location id="id3" x="136" y="9">
-			<label kind="comments" x="119" y="-76">Dicht
+		<location id="id3" x="0" y="68">
+			<label kind="comments" x="-17" y="-59">Dicht
 Hoog
 Dicht</label>
 		</location>
-		<location id="id4" x="136" y="102">
-			<label kind="comments" x="212" y="76">Dicht
+		<location id="id4" x="-170" y="136">
+			<label kind="comments" x="-187" y="229">Dicht
 Vullen
 Dicht</label>
 		</location>
-		<location id="id5" x="0" y="187">
-			<label kind="comments" x="-17" y="102">Dicht
+		<location id="id5" x="-340" y="68">
+			<label kind="comments" x="-357" y="-59">Dicht
 Laag
 Dicht</label>
 		</location>
 		<init ref="id5"/>
 		<transition>
-			<source ref="id1"/>
+			<source ref="id2"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="68" y="-17">close?</label>
+			<nail x="136" y="0"/>
+			<nail x="34" y="0"/>
+		</transition>
+		<transition>
+			<source ref="id3"/>
 			<target ref="id1"/>
-			<nail x="-212" y="51"/>
-			<nail x="-212" y="136"/>
+			<nail x="-34" y="0"/>
 		</transition>
 		<transition>
 			<source ref="id0"/>
 			<target ref="id5"/>
+			<label kind="synchronisation" x="-442" y="-17">close?</label>
+			<nail x="-476" y="0"/>
+			<nail x="-374" y="0"/>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id0"/>
+			<label kind="synchronisation" x="-442" y="68">open?</label>
 		</transition>
 		<transition>
 			<source ref="id1"/>
-			<target ref="id0"/>
+			<target ref="id5"/>
+			<label kind="synchronisation" x="-288" y="-17">waterOke?</label>
+			<nail x="-306" y="0"/>
 		</transition>
 		<transition>
-			<source ref="id2"/>
+			<source ref="id1"/>
 			<target ref="id1"/>
-			<nail x="-153" y="9"/>
+			<label kind="synchronisation" x="-203" y="-85">waterDown?</label>
+			<nail x="-119" y="-68"/>
+			<nail x="-221" y="-68"/>
 		</transition>
 		<transition>
 			<source ref="id3"/>
 			<target ref="id2"/>
+			<label kind="synchronisation" x="68" y="68">open?</label>
 		</transition>
 		<transition>
 			<source ref="id4"/>
 			<target ref="id3"/>
+			<label kind="synchronisation" x="-102" y="119">waterOke?</label>
+			<nail x="-34" y="136"/>
 		</transition>
 		<transition>
 			<source ref="id4"/>
 			<target ref="id4"/>
-			<nail x="196" y="144"/>
-			<nail x="196" y="60"/>
+			<label kind="synchronisation" x="-195" y="204">waterUp?</label>
+			<nail x="-221" y="204"/>
+			<nail x="-119" y="204"/>
 		</transition>
 		<transition>
 			<source ref="id5"/>
 			<target ref="id4"/>
-			<nail x="136" y="187"/>
+			<nail x="-306" y="136"/>
 		</transition>
 	</template>
 	<template>
-		<name>Deur</name>
-		<declaration>int[0,1] id; //zodat er 2 deuren gedefineerd kunnen worden</declaration>
-		<location id="id6" x="-59" y="-8">
-			<label kind="comments" x="-76" y="-59">Open</label>
+		<name>Door</name>
+		<parameter>id_d d</parameter>
+		<declaration>int[0,1] id; //zodat er 2 deuren gedefineerd kunnen worden
+
+bool isOpen=false;
+</declaration>
+		<location id="id6" x="-153" y="-34">
+			<label kind="comments" x="-127" y="-42">Open</label>
 		</location>
-		<location id="id7" x="-178" y="-8">
-			<label kind="comments" x="-195" y="-59">Dicht</label>
+		<location id="id7" x="-272" y="-34">
+			<label kind="comments" x="-340" y="-42">Dicht</label>
 		</location>
 		<init ref="id7"/>
 		<transition>
 			<source ref="id6"/>
 			<target ref="id7"/>
-			<nail x="-59" y="51"/>
-			<nail x="-178" y="51"/>
+			<label kind="guard" x="-255" y="76">isOpen == true</label>
+			<label kind="synchronisation" x="-255" y="42">close!</label>
+			<label kind="assignment" x="-255" y="59">isOpen = false</label>
+			<nail x="-153" y="25"/>
+			<nail x="-272" y="25"/>
 		</transition>
 		<transition>
 			<source ref="id7"/>
 			<target ref="id6"/>
+			<label kind="guard" x="-254" y="-68">isOpen == false</label>
+			<label kind="synchronisation" x="-255" y="-102">open!</label>
+			<label kind="assignment" x="-255" y="-85">isOpen = true</label>
 		</transition>
 	</template>
 	<template>
 		<name>WaterLevel</name>
-		<declaration>int[0,100] waterLevel; //houd de hoogte van het water bij in de kamer</declaration>
+		<declaration>int[0,100] waterLevel; //houd de hoogte van het water bij in de kamer
+
+//alternatief een bol/state met 2 acties up&amp;down</declaration>
 		<location id="id8" x="0" y="17">
 			<label kind="comments" x="76" y="-17">Down</label>
 		</location>
@@ -112,23 +166,31 @@ Dicht</label>
 		<transition>
 			<source ref="id9"/>
 			<target ref="id9"/>
+			<label kind="synchronisation" x="85" y="-204">waterUp!</label>
+			<label kind="assignment" x="85" y="-187">waterLevel++</label>
 			<nail x="76" y="-144"/>
 			<nail x="76" y="-229"/>
 		</transition>
 		<transition>
 			<source ref="id8"/>
 			<target ref="id8"/>
+			<label kind="synchronisation" x="76" y="8">waterDown!</label>
+			<label kind="assignment" x="76" y="25">waterLevel--</label>
 			<nail x="68" y="59"/>
 			<nail x="68" y="-25"/>
 		</transition>
 		<transition>
 			<source ref="id9"/>
 			<target ref="id10"/>
+			<label kind="guard" x="-136" y="-221">waterLevel &gt;= upperLevel</label>
+			<label kind="synchronisation" x="-136" y="-238">waterOke!</label>
 			<nail x="-136" y="-187"/>
 		</transition>
 		<transition>
 			<source ref="id8"/>
 			<target ref="id10"/>
+			<label kind="guard" x="-136" y="34">waterLevel &lt;= lowerLevel</label>
+			<label kind="synchronisation" x="-136" y="17">waterOke!</label>
 			<nail x="-136" y="17"/>
 		</transition>
 		<transition>
@@ -143,7 +205,7 @@ Dicht</label>
 	<system>// Place template instantiations here.
 // Process = Template();
 // List one or more processes to be composed into a system.
-system Main, Deur, WaterLevel;
+system Main, Door, WaterLevel;
     </system>
 	<queries>
 		<query>
