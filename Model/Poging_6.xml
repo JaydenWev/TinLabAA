@@ -5,8 +5,12 @@
 
 // kanalen deur
 chan open, close;
-urgent chan openFront, openBack;
-urgent chan closedFront, closedBack;
+urgent chan openLow, openHigh;
+urgent chan closedLow, closedHigh;
+//boot kanalen
+chan reqLow, reqHigh;
+chan boatDown, boatUp;
+chan exitLow, exitHigh;
 // kanalen water
 chan waterLow, waterHigh, waterUp, waterDown;
 
@@ -14,124 +18,201 @@ int waterLevel = 1; //houd de hoogte van het water bij in de kamer
 int lowerLevel = 1;
 int upperLevel = 10;
 
+//Boten
+int[0,10] waitingLow, waitingHigh = 0;
+bool containsBoat = false;
+
 //Deur
 
-/*TODO
-van waterLevel een shared variable maken
-    maar is dit wel nodig met gebruik van sync, volgensmij niet
-
-*/</declaration>
+//Boten
+void enterExit(){
+    if(containsBoat){
+        containsBoat = false;
+    }
+    else{
+        waitingLow--;
+        containsBoat = true;
+    }
+}</declaration>
 	<template>
 		<name x="5" y="5">Main</name>
 		<declaration>// Place local declarations here.
 
 bool highDoor = false;
-bool lowDoor = true;</declaration>
-		<location id="id0" x="-510" y="68">
+bool lowDoor = false;
+</declaration>
+		<location id="id0" x="-306" y="0">
+			<name x="-314" y="-59">boatMovingDown</name>
+		</location>
+		<location id="id1" x="-34" y="136">
+			<name x="-51" y="153">boatMovingUp</name>
+		</location>
+		<location id="id2" x="-510" y="68">
 			<name x="-501" y="42">OpenLow</name>
-			<label kind="comments" x="-535" y="-59">Open
+			<label kind="comments" x="-527" y="-127">Open
 Laag
 Dicht</label>
 		</location>
-		<location id="id1" x="-170" y="0">
+		<location id="id3" x="-170" y="0">
 			<name x="-170" y="17">Draining</name>
-			<label kind="comments" x="-187" y="-144">Dicht
+			<label kind="comments" x="-187" y="-170">Dicht
 Legen
 Dicht</label>
 		</location>
-		<location id="id2" x="170" y="68">
-			<name x="178" y="42">OpenHigh</name>
-			<label kind="comments" x="153" y="-59">Dicht
+		<location id="id4" x="170" y="68">
+			<name x="161" y="17">OpenHigh</name>
+			<label kind="comments" x="153" y="-127">Dicht
 Hoog
 Open</label>
 		</location>
-		<location id="id3" x="0" y="68">
+		<location id="id5" x="0" y="68">
 			<name x="17" y="42">ClosedHigh</name>
-			<label kind="comments" x="-17" y="-59">Dicht
+			<label kind="comments" x="-17" y="-127">Dicht
 Hoog
 Dicht</label>
 		</location>
-		<location id="id4" x="-170" y="136">
+		<location id="id6" x="-170" y="136">
 			<name x="-170" y="102">Filing</name>
-			<label kind="comments" x="-238" y="246">Dicht
+			<label kind="comments" x="-187" y="246">Dicht
 Vullen
 Dicht</label>
 		</location>
-		<location id="id5" x="-340" y="68">
-			<name x="-323" y="42">ClosedLow</name>
-			<label kind="comments" x="-357" y="-59">Dicht
+		<location id="id7" x="-340" y="68">
+			<name x="-331" y="51">ClosedLow</name>
+			<label kind="comments" x="-357" y="-136">Dicht
 Laag
 Dicht</label>
 		</location>
-		<init ref="id5"/>
+		<init ref="id7"/>
 		<transition>
 			<source ref="id2"/>
-			<target ref="id3"/>
-			<label kind="synchronisation" x="68" y="-17">closedBack?</label>
+			<target ref="id2"/>
+			<label kind="guard" x="-628" y="-17">containsBoat</label>
+			<label kind="synchronisation" x="-620" y="0">exitLow!</label>
+			<label kind="assignment" x="-654" y="17">enterExit()</label>
+			<nail x="-510" y="-34"/>
+			<nail x="-612" y="68"/>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id4"/>
+			<label kind="guard" x="212" y="-17">containsBoat</label>
+			<label kind="synchronisation" x="229" y="0">exitHigh!</label>
+			<label kind="assignment" x="246" y="17">enterExit()</label>
+			<nail x="170" y="-34"/>
+			<nail x="272" y="68"/>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id7"/>
+			<label kind="synchronisation" x="-331" y="17">boatDown!</label>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id0"/>
+			<label kind="guard" x="-289" y="-34">!containsBoat</label>
+			<label kind="synchronisation" x="-289" y="-17">waterLow!</label>
+		</transition>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id5"/>
+			<label kind="synchronisation" x="-59" y="85">boatUp!</label>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id1"/>
+			<label kind="guard" x="-144" y="119">containsBoat</label>
+			<label kind="synchronisation" x="-136" y="136">waterHigh!</label>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id4"/>
+			<label kind="guard" x="238" y="119">!containsBoat</label>
+			<label kind="synchronisation" x="221" y="136">reqHigh!</label>
+			<label kind="assignment" x="204" y="153">enterExit()</label>
+			<nail x="170" y="170"/>
+			<nail x="272" y="68"/>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id2"/>
+			<label kind="guard" x="-654" y="119">!containsBoat</label>
+			<label kind="synchronisation" x="-603" y="136">reqLow!</label>
+			<label kind="assignment" x="-594" y="153">enterExit()</label>
+			<nail x="-510" y="170"/>
+			<nail x="-612" y="68"/>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id5"/>
+			<label kind="synchronisation" x="34" y="-34">closedHigh?</label>
+			<label kind="assignment" x="34" y="-17">highDoor = false</label>
 			<nail x="136" y="0"/>
 			<nail x="34" y="0"/>
 		</transition>
 		<transition>
-			<source ref="id3"/>
-			<target ref="id1"/>
-			<label kind="guard" x="-152" y="-34">highDoor == true</label>
-			<label kind="assignment" x="-136" y="-51">highDoor = false</label>
+			<source ref="id5"/>
+			<target ref="id3"/>
+			<label kind="guard" x="-102" y="-25">highDoor == false</label>
 			<nail x="-34" y="0"/>
 		</transition>
 		<transition>
-			<source ref="id0"/>
-			<target ref="id5"/>
-			<label kind="synchronisation" x="-442" y="-17">closedFront?</label>
+			<source ref="id2"/>
+			<target ref="id7"/>
+			<label kind="synchronisation" x="-476" y="-34">closedLow?</label>
+			<label kind="assignment" x="-476" y="-17">lowDoor = false</label>
 			<nail x="-476" y="0"/>
 			<nail x="-374" y="0"/>
 		</transition>
 		<transition>
-			<source ref="id5"/>
-			<target ref="id0"/>
-			<label kind="guard" x="-501" y="76">(waterLevel &lt;= lowerLevel) &amp;&amp;(lowDoor == false)</label>
-			<label kind="synchronisation" x="-450" y="93">openFront?</label>
-			<label kind="assignment" x="-459" y="110">lowDoor = true</label>
+			<source ref="id7"/>
+			<target ref="id2"/>
+			<label kind="guard" x="-501" y="76">(waterLevel&lt;=lowerLevel)&amp;&amp;(lowDoor==false)
+&amp;&amp;((waitingLow&gt;0)||containsBoat)</label>
+			<label kind="synchronisation" x="-501" y="110">openLow?</label>
+			<label kind="assignment" x="-501" y="127">lowDoor = true</label>
 		</transition>
 		<transition>
-			<source ref="id1"/>
-			<target ref="id5"/>
-			<label kind="synchronisation" x="-288" y="-17">waterLow?</label>
-			<nail x="-306" y="0"/>
+			<source ref="id3"/>
+			<target ref="id7"/>
+			<label kind="synchronisation" x="-263" y="51">waterLow?</label>
+			<nail x="-204" y="68"/>
 		</transition>
 		<transition>
-			<source ref="id1"/>
-			<target ref="id1"/>
+			<source ref="id3"/>
+			<target ref="id3"/>
 			<label kind="guard" x="-203" y="-102">waterLevel &gt;= lowerLevel</label>
 			<label kind="synchronisation" x="-203" y="-85">waterDown?</label>
 			<nail x="-119" y="-68"/>
 			<nail x="-221" y="-68"/>
 		</transition>
 		<transition>
-			<source ref="id3"/>
-			<target ref="id2"/>
-			<label kind="guard" x="8" y="85">(waterLevel &gt;= upperLevel)&amp;&amp;(highDoor == false)</label>
-			<label kind="synchronisation" x="59" y="102">openBack?</label>
-			<label kind="assignment" x="42" y="119">highDoor = true</label>
-		</transition>
-		<transition>
-			<source ref="id4"/>
-			<target ref="id3"/>
-			<label kind="synchronisation" x="-102" y="119">waterHigh?</label>
-			<nail x="-34" y="136"/>
-		</transition>
-		<transition>
-			<source ref="id4"/>
+			<source ref="id5"/>
 			<target ref="id4"/>
+			<label kind="guard" x="8" y="85">(waterLevel &gt;= upperLevel)&amp;&amp;(highDoor == false)
+&amp;&amp;((waitingHigh&gt;0)||containsBoat)</label>
+			<label kind="synchronisation" x="59" y="119">openHigh?</label>
+			<label kind="assignment" x="42" y="136">highDoor = true</label>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id5"/>
+			<label kind="guard" x="-136" y="51">!containsBoat</label>
+			<label kind="synchronisation" x="-136" y="68">waterHigh!</label>
+			<nail x="-136" y="68"/>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id6"/>
 			<label kind="guard" x="-195" y="221">waterLevel &lt;= upperLevel</label>
 			<label kind="synchronisation" x="-195" y="204">waterUp?</label>
 			<nail x="-221" y="204"/>
 			<nail x="-119" y="204"/>
 		</transition>
 		<transition>
-			<source ref="id5"/>
-			<target ref="id4"/>
-			<label kind="guard" x="-357" y="144">lowDoor == true</label>
-			<label kind="assignment" x="-357" y="161">lowDoor = false</label>
+			<source ref="id7"/>
+			<target ref="id6"/>
+			<label kind="guard" x="-357" y="144">lowDoor == false</label>
 			<nail x="-306" y="136"/>
 		</transition>
 	</template>
@@ -162,20 +243,71 @@ void changePos(bool &amp;ship){
         ship = true;
     }
 }</declaration>
-		<location id="id6" x="-748" y="-306">
+		<location id="id8" x="-952" y="-204">
+			<name x="-986" y="-246">LowInside</name>
 		</location>
-		<location id="id7" x="-493" y="-306">
+		<location id="id9" x="-1088" y="-204">
+			<name x="-1139" y="-195">LowOutside</name>
 		</location>
-		<init ref="id6"/>
+		<location id="id10" x="-952" y="-408">
+			<name x="-986" y="-391">UpperInside</name>
+		</location>
+		<location id="id11" x="-1088" y="-408">
+			<name x="-1130" y="-442">UpperOutside</name>
+		</location>
+		<location id="id12" x="-1190" y="-306">
+			<name x="-1241" y="-331">Away</name>
+		</location>
+		<location id="id13" x="-782" y="-408">
+			<name x="-792" y="-442">LowerIn</name>
+		</location>
+		<location id="id14" x="-782" y="-204">
+			<name x="-792" y="-238">UpperIn</name>
+		</location>
+		<init ref="id12"/>
 		<transition>
-			<source ref="id7"/>
-			<target ref="id6"/>
-			<nail x="-493" y="-238"/>
-			<nail x="-748" y="-238"/>
+			<source ref="id13"/>
+			<target ref="id12"/>
+			<label kind="synchronisation" x="-1172" y="-493">exitLow?</label>
+			<nail x="-782" y="-476"/>
+			<nail x="-1190" y="-476"/>
 		</transition>
 		<transition>
-			<source ref="id6"/>
-			<target ref="id7"/>
+			<source ref="id14"/>
+			<target ref="id12"/>
+			<label kind="synchronisation" x="-1172" y="-153">exitHigh?</label>
+			<nail x="-782" y="-136"/>
+			<nail x="-1190" y="-136"/>
+		</transition>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id13"/>
+			<label kind="synchronisation" x="-901" y="-425">boatDown?</label>
+		</transition>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id14"/>
+			<label kind="synchronisation" x="-901" y="-221">boatUp?</label>
+		</transition>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id8"/>
+			<label kind="synchronisation" x="-1054" y="-221">reqLow?</label>
+		</transition>
+		<transition>
+			<source ref="id12"/>
+			<target ref="id9"/>
+			<label kind="assignment" x="-1156" y="-289">waitingLow++</label>
+		</transition>
+		<transition>
+			<source ref="id11"/>
+			<target ref="id10"/>
+			<label kind="synchronisation" x="-1054" y="-425">reqHigh?</label>
+		</transition>
+		<transition>
+			<source ref="id12"/>
+			<target ref="id11"/>
+			<label kind="assignment" x="-1156" y="-348">waitingHigh++</label>
 		</transition>
 	</template>
 	<template>
@@ -183,16 +315,16 @@ void changePos(bool &amp;ship){
 		<parameter>bool &amp;isOpen, urgent chan &amp;Open1, urgent chan &amp;Closed1</parameter>
 		<declaration>//bool isOpen=false;
 </declaration>
-		<location id="id8" x="-34" y="-68">
+		<location id="id15" x="-34" y="-68">
 			<name x="-34" y="-102">Open</name>
 		</location>
-		<location id="id9" x="-204" y="-68">
+		<location id="id16" x="-204" y="-68">
 			<name x="-238" y="-102">Closed</name>
 		</location>
-		<init ref="id9"/>
+		<init ref="id16"/>
 		<transition>
-			<source ref="id8"/>
-			<target ref="id9"/>
+			<source ref="id15"/>
+			<target ref="id16"/>
 			<label kind="guard" x="-170" y="8">isOpen == true</label>
 			<label kind="synchronisation" x="-170" y="25">Closed1!</label>
 			<label kind="assignment" x="-170" y="42">isOpen = false</label>
@@ -200,8 +332,8 @@ void changePos(bool &amp;ship){
 			<nail x="-204" y="0"/>
 		</transition>
 		<transition>
-			<source ref="id9"/>
-			<target ref="id8"/>
+			<source ref="id16"/>
+			<target ref="id15"/>
 			<label kind="guard" x="-170" y="-127">isOpen == false</label>
 			<label kind="synchronisation" x="-170" y="-110">Open1!</label>
 			<label kind="assignment" x="-170" y="-93">isOpen = true</label>
@@ -211,19 +343,19 @@ void changePos(bool &amp;ship){
 		<name>WaterLevel</name>
 		<declaration>
 //alternatief een bol/state met 2 acties up&amp;down [niet nodig]</declaration>
-		<location id="id10" x="0" y="17">
+		<location id="id17" x="0" y="17">
 			<label kind="comments" x="76" y="-17">Down</label>
 		</location>
-		<location id="id11" x="8" y="-187">
+		<location id="id18" x="8" y="-187">
 			<label kind="comments" x="85" y="-221">Up</label>
 		</location>
-		<location id="id12" x="-136" y="-93">
+		<location id="id19" x="-136" y="-93">
 			<label kind="comments" x="-212" y="-102">standby</label>
 		</location>
-		<init ref="id12"/>
+		<init ref="id19"/>
 		<transition>
-			<source ref="id11"/>
-			<target ref="id11"/>
+			<source ref="id18"/>
+			<target ref="id18"/>
 			<label kind="guard" x="85" y="-204">waterLevel != upperLevel</label>
 			<label kind="synchronisation" x="85" y="-187">waterUp!</label>
 			<label kind="assignment" x="85" y="-170">waterLevel++</label>
@@ -231,8 +363,8 @@ void changePos(bool &amp;ship){
 			<nail x="76" y="-229"/>
 		</transition>
 		<transition>
-			<source ref="id10"/>
-			<target ref="id10"/>
+			<source ref="id17"/>
+			<target ref="id17"/>
 			<label kind="guard" x="76" y="0">waterLevel != lowerLevel</label>
 			<label kind="synchronisation" x="76" y="17">waterDown!</label>
 			<label kind="assignment" x="76" y="34">waterLevel--</label>
@@ -240,35 +372,35 @@ void changePos(bool &amp;ship){
 			<nail x="68" y="-25"/>
 		</transition>
 		<transition>
-			<source ref="id11"/>
-			<target ref="id12"/>
+			<source ref="id18"/>
+			<target ref="id19"/>
 			<label kind="guard" x="-136" y="-229">waterLevel &gt;= upperLevel</label>
-			<label kind="synchronisation" x="-136" y="-212">waterHigh!</label>
+			<label kind="synchronisation" x="-136" y="-212">waterHigh?</label>
 			<nail x="-136" y="-187"/>
 		</transition>
 		<transition>
-			<source ref="id10"/>
-			<target ref="id12"/>
+			<source ref="id17"/>
+			<target ref="id19"/>
 			<label kind="guard" x="-136" y="17">waterLevel &lt;= lowerLevel</label>
 			<label kind="synchronisation" x="-136" y="34">waterLow!</label>
 			<nail x="-136" y="17"/>
 		</transition>
 		<transition>
-			<source ref="id12"/>
-			<target ref="id10"/>
+			<source ref="id19"/>
+			<target ref="id17"/>
 			<label kind="synchronisation" x="-68" y="-59">waterDown!</label>
 		</transition>
 		<transition>
-			<source ref="id12"/>
-			<target ref="id11"/>
+			<source ref="id19"/>
+			<target ref="id18"/>
 			<label kind="synchronisation" x="-68" y="-144">waterUp!</label>
 		</transition>
 	</template>
 	<template>
 		<name>Object</name>
-		<location id="id13" x="-467" y="-93">
+		<location id="id20" x="-467" y="-93">
 		</location>
-		<init ref="id13"/>
+		<init ref="id20"/>
 	</template>
 	<system>// Place template instantiations here.
 // Process = Template();
@@ -276,13 +408,10 @@ void changePos(bool &amp;ship){
 bool FrontDoorIsOpen, BackDoorIsOpen;
 urgent chan Closed, Open;
 
-
-FrontDoor = Door(FrontDoorIsOpen, openFront, closedFront);
-BackDoor = Door(BackDoorIsOpen, openBack, closedBack);
-//system Main, WaterLevel, FrontDoor, BackDoor;
-system Boten;
-
-    </system>
+FrontDoor = Door(FrontDoorIsOpen, openLow, closedLow);
+BackDoor = Door(BackDoorIsOpen, openHigh, closedHigh);
+system Main, WaterLevel, FrontDoor, BackDoor, Boten;
+</system>
 	<queries>
 		<query>
 			<formula>A[]deadlock</formula>
