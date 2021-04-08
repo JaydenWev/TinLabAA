@@ -94,7 +94,6 @@ Dicht</label>
 Laag
 Dicht</label>
 		</location>
-		<init ref="id7"/>
 		<transition>
 			<source ref="id2"/>
 			<target ref="id2"/>
