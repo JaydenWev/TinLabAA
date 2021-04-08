@@ -396,12 +396,6 @@ void changePos(bool &amp;ship){
 			<label kind="synchronisation" x="-68" y="-144">waterUp!</label>
 		</transition>
 	</template>
-	<template>
-		<name>Object</name>
-		<location id="id20" x="-467" y="-93">
-		</location>
-		<init ref="id20"/>
-	</template>
 	<system>// Place template instantiations here.
 // Process = Template();
 // List one or more processes to be composed into a system.
@@ -410,6 +404,10 @@ urgent chan Closed, Open;
 
 FrontDoor = Door(FrontDoorIsOpen, openLow, closedLow);
 BackDoor = Door(BackDoorIsOpen, openHigh, closedHigh);
+
+
+
+
 system Main, WaterLevel, FrontDoor, BackDoor, Boten;
 </system>
 	<queries>
