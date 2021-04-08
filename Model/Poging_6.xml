@@ -2,7 +2,11 @@
 <!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
 <nta>
 	<declaration>// Place global declarations here.
-
+/*
+Als een boot zijn uitgang mist komt er een deadlock bij boatMovingUp/boatMovingDown
+boatMovingUp direct naar openHigh (hetzelfde voor de Low-kant)
+    oftewel ClosedHigh opsplitsen in 2 locaties
+*/
 // kanalen deur
 chan open, close;
 urgent chan openLow, openHigh;
@@ -44,7 +48,8 @@ void enterExit(int position){
             containsBoat = true;
         }
     }
-}</declaration>
+}
+</declaration>
 	<template>
 		<name x="5" y="5">Main</name>
 		<declaration>// Place local declarations here.
