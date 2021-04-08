@@ -25,13 +25,24 @@ bool containsBoat = false;
 //Deur
 
 //Boten
-void enterExit(){
-    if(containsBoat){
-        containsBoat = false;
+void enterExit(int position){
+    if(position){ //high - 1
+        if(containsBoat){
+            containsBoat = false;
+        }
+        else{
+            waitingHigh--;
+            containsBoat = true;
+        }
     }
-    else{
-        waitingLow--;
-        containsBoat = true;
+    if(!position){ //low - 0
+        if(containsBoat){
+            containsBoat = false;
+        }
+        else{
+            waitingLow--;
+            containsBoat = true;
+        }
     }
 }</declaration>
 	<template>
@@ -89,7 +100,7 @@ Dicht</label>
 			<target ref="id2"/>
 			<label kind="guard" x="-628" y="-17">containsBoat</label>
 			<label kind="synchronisation" x="-620" y="0">exitLow!</label>
-			<label kind="assignment" x="-654" y="17">enterExit()</label>
+			<label kind="assignment" x="-654" y="17">enterExit(0)</label>
 			<nail x="-510" y="-34"/>
 			<nail x="-612" y="68"/>
 		</transition>
@@ -98,7 +109,7 @@ Dicht</label>
 			<target ref="id4"/>
 			<label kind="guard" x="212" y="-17">containsBoat</label>
 			<label kind="synchronisation" x="229" y="0">exitHigh!</label>
-			<label kind="assignment" x="246" y="17">enterExit()</label>
+			<label kind="assignment" x="246" y="17">enterExit(1)</label>
 			<nail x="170" y="-34"/>
 			<nail x="272" y="68"/>
 		</transition>
@@ -129,7 +140,7 @@ Dicht</label>
 			<target ref="id4"/>
 			<label kind="guard" x="238" y="119">!containsBoat</label>
 			<label kind="synchronisation" x="221" y="136">reqHigh!</label>
-			<label kind="assignment" x="204" y="153">enterExit()</label>
+			<label kind="assignment" x="204" y="153">enterExit(1)</label>
 			<nail x="170" y="170"/>
 			<nail x="272" y="68"/>
 		</transition>
@@ -138,7 +149,7 @@ Dicht</label>
 			<target ref="id2"/>
 			<label kind="guard" x="-654" y="119">!containsBoat</label>
 			<label kind="synchronisation" x="-603" y="136">reqLow!</label>
-			<label kind="assignment" x="-594" y="153">enterExit()</label>
+			<label kind="assignment" x="-594" y="153">enterExit(0)</label>
 			<nail x="-510" y="170"/>
 			<nail x="-612" y="68"/>
 		</transition>
@@ -217,7 +228,7 @@ Dicht</label>
 		</transition>
 	</template>
 	<template>
-		<name>Boten</name>
+		<name>Boat</name>
 		<declaration>bool boolEverGiven = false;
 bool boolTitanic = false;
 bool boolTheUglyDuck = true;
@@ -397,7 +408,7 @@ void changePos(bool &amp;ship){
 		</transition>
 	</template>
 	<system>// Place template instantiations here.
-// Process = Template();
+// Process = Template(); 
 // List one or more processes to be composed into a system.
 bool FrontDoorIsOpen, BackDoorIsOpen;
 urgent chan Closed, Open;
@@ -405,10 +416,12 @@ urgent chan Closed, Open;
 FrontDoor = Door(FrontDoorIsOpen, openLow, closedLow);
 BackDoor = Door(BackDoorIsOpen, openHigh, closedHigh);
 
+Titanic = Boat();
+FlyingDutchman = Boat();
+TheUglyDuck = Boat();
+EverGiven = Boat();
 
-
-
-system Main, WaterLevel, FrontDoor, BackDoor, Boten;
+system Main, FrontDoor, BackDoor, WaterLevel, Titanic, FlyingDutchman, TheUglyDuck, EverGiven;
 </system>
 	<queries>
 		<query>
