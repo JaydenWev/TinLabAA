@@ -448,7 +448,8 @@ system Main, FrontDoor, BackDoor, WaterLevel, Titanic, FlyingDutchman, TheUglyDu
 	<queries>
 		<query>
 			<formula>Main.ClosedLow--&gt;Main.OpenLow</formula>
-			<comment></comment>
+			<comment>Les van 03-18 5:15
+Een clock en invariant gebruiken.</comment>
 		</query>
 		<query>
 			<formula>Main.ClosedLow--&gt;Main.Filling</formula>
@@ -459,11 +460,19 @@ system Main, FrontDoor, BackDoor, WaterLevel, Titanic, FlyingDutchman, TheUglyDu
 			<comment></comment>
 		</query>
 		<query>
-			<formula>A[]containsBoat==true</formula>
+			<formula>E&lt;&gt;containsBoat==true</formula>
 			<comment></comment>
 		</query>
 		<query>
-			<formula>A[]deadlock</formula>
+			<formula>A&lt;&gt;waitingHigh==true</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>E[]waitingLow==true</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>A[] not deadlock</formula>
 			<comment></comment>
 		</query>
 	</queries>
