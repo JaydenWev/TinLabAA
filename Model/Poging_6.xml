@@ -6,6 +6,15 @@
 Als een boot zijn uitgang mist komt er een deadlock bij boatMovingUp/boatMovingDown
 boatMovingUp direct naar openHigh (hetzelfde voor de Low-kant)
     oftewel ClosedHigh opsplitsen in 2 locaties
+
+De verificaties moeten nog gemaakt worden
+    aantal voorbeelden al in verifier
+
+
+tijdelijk uit de toOpenLow verwijdert
+    &amp;&amp;((waitingLow&gt;0)||containsBoat)
+tijdelijk uit de toOpenHigh verwijdert
+    &amp;&amp;((waitingHigh&gt;0)||containsBoat)
 */
 // kanalen deur
 chan open, close;
@@ -99,6 +108,7 @@ Dicht</label>
 Laag
 Dicht</label>
 		</location>
+		<init ref="id7"/>
 		<transition>
 			<source ref="id2"/>
 			<target ref="id2"/>
@@ -182,8 +192,7 @@ Dicht</label>
 		<transition>
 			<source ref="id7"/>
 			<target ref="id2"/>
-			<label kind="guard" x="-501" y="76">(waterLevel&lt;=lowerLevel)&amp;&amp;(lowDoor==false)
-&amp;&amp;((waitingLow&gt;0)||containsBoat)</label>
+			<label kind="guard" x="-501" y="76">(waterLevel&lt;=lowerLevel)&amp;&amp;(lowDoor==false)</label>
 			<label kind="synchronisation" x="-501" y="110">openLow?</label>
 			<label kind="assignment" x="-501" y="127">lowDoor = true</label>
 		</transition>
@@ -204,8 +213,7 @@ Dicht</label>
 		<transition>
 			<source ref="id5"/>
 			<target ref="id4"/>
-			<label kind="guard" x="8" y="85">(waterLevel &gt;= upperLevel)&amp;&amp;(highDoor == false)
-&amp;&amp;((waitingHigh&gt;0)||containsBoat)</label>
+			<label kind="guard" x="8" y="85">(waterLevel &gt;= upperLevel)&amp;&amp;(highDoor == false)</label>
 			<label kind="synchronisation" x="59" y="119">openHigh?</label>
 			<label kind="assignment" x="42" y="136">highDoor = true</label>
 		</transition>
@@ -428,6 +436,10 @@ EverGiven = Boat();
 system Main, FrontDoor, BackDoor, WaterLevel, Titanic, FlyingDutchman, TheUglyDuck, EverGiven;
 </system>
 	<queries>
+		<query>
+			<formula>Main.ClosedLow--&gt;Main.OpenLow</formula>
+			<comment></comment>
+		</query>
 		<query>
 			<formula>A[]deadlock</formula>
 			<comment></comment>
