@@ -3,10 +3,13 @@
 <nta>
 	<declaration>// Place global declarations here.
 /*
+********** FIXED **********
 Als een boot zijn uitgang mist komt er een deadlock bij boatMovingUp/boatMovingDown
 boatMovingUp direct naar openHigh (hetzelfde voor de Low-kant)
     oftewel ClosedHigh opsplitsen in 2 locaties
+***************************
 
+********** TODO **********
 De verificaties moeten nog gemaakt worden
     aantal voorbeelden al in verifier
 
@@ -65,7 +68,8 @@ void enterExit(int position){
 
 bool highDoor = false;
 bool lowDoor = false;
-</declaration>
+
+bool toHigh, toLow = false;</declaration>
 		<location id="id0" x="-306" y="0">
 			<name x="-314" y="-59">boatMovingDown</name>
 		</location>
@@ -114,7 +118,8 @@ Dicht</label>
 			<target ref="id2"/>
 			<label kind="guard" x="-628" y="-17">containsBoat</label>
 			<label kind="synchronisation" x="-620" y="0">exitLow!</label>
-			<label kind="assignment" x="-654" y="17">enterExit(0)</label>
+			<label kind="assignment" x="-654" y="17">enterExit(0),
+toLow=false</label>
 			<nail x="-510" y="-34"/>
 			<nail x="-612" y="68"/>
 		</transition>
@@ -123,7 +128,8 @@ Dicht</label>
 			<target ref="id4"/>
 			<label kind="guard" x="212" y="-17">containsBoat</label>
 			<label kind="synchronisation" x="229" y="0">exitHigh!</label>
-			<label kind="assignment" x="246" y="17">enterExit(1)</label>
+			<label kind="assignment" x="255" y="17">enterExit(1),
+toHigh=false</label>
 			<nail x="170" y="-34"/>
 			<nail x="272" y="68"/>
 		</transition>
@@ -154,7 +160,8 @@ Dicht</label>
 			<target ref="id4"/>
 			<label kind="guard" x="238" y="119">!containsBoat</label>
 			<label kind="synchronisation" x="221" y="136">reqHigh!</label>
-			<label kind="assignment" x="204" y="153">enterExit(1)</label>
+			<label kind="assignment" x="204" y="153">enterExit(1),
+toLow=true</label>
 			<nail x="170" y="170"/>
 			<nail x="272" y="68"/>
 		</transition>
@@ -163,7 +170,8 @@ Dicht</label>
 			<target ref="id2"/>
 			<label kind="guard" x="-654" y="119">!containsBoat</label>
 			<label kind="synchronisation" x="-603" y="136">reqLow!</label>
-			<label kind="assignment" x="-594" y="153">enterExit(0)</label>
+			<label kind="assignment" x="-595" y="153">enterExit(0),
+toHigh=true</label>
 			<nail x="-510" y="170"/>
 			<nail x="-612" y="68"/>
 		</transition>
@@ -178,7 +186,8 @@ Dicht</label>
 		<transition>
 			<source ref="id5"/>
 			<target ref="id3"/>
-			<label kind="guard" x="-102" y="-25">highDoor == false</label>
+			<label kind="guard" x="-102" y="-25">highDoor == false&amp;&amp;
+toHigh == false</label>
 			<nail x="-34" y="0"/>
 		</transition>
 		<transition>
@@ -235,7 +244,8 @@ Dicht</label>
 		<transition>
 			<source ref="id7"/>
 			<target ref="id6"/>
-			<label kind="guard" x="-357" y="144">lowDoor == false</label>
+			<label kind="guard" x="-357" y="144">lowDoor == false &amp;&amp;
+toLow == false</label>
 			<nail x="-306" y="136"/>
 		</transition>
 	</template>
@@ -442,6 +452,14 @@ system Main, FrontDoor, BackDoor, WaterLevel, Titanic, FlyingDutchman, TheUglyDu
 		</query>
 		<query>
 			<formula>Main.ClosedLow--&gt;Main.Filling</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>containsBoat==false--&gt;containsBoat==true</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>A[]containsBoat==true</formula>
 			<comment></comment>
 		</query>
 		<query>
