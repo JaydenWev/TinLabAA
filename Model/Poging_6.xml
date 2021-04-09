@@ -97,7 +97,7 @@ Hoog
 Dicht</label>
 		</location>
 		<location id="id6" x="-170" y="136">
-			<name x="-170" y="102">Filing</name>
+			<name x="-170" y="102">Filling</name>
 			<label kind="comments" x="-187" y="246">Dicht
 Vullen
 Dicht</label>
@@ -241,7 +241,7 @@ Dicht</label>
 	</template>
 	<template>
 		<name>Boat</name>
-		<declaration>bool boolEverGiven = false;
+		<declaration>/*bool boolEverGiven = false;
 bool boolTitanic = false;
 bool boolTheUglyDuck = true;
 bool boolDeWitteSwaen = true;
@@ -438,6 +438,10 @@ system Main, FrontDoor, BackDoor, WaterLevel, Titanic, FlyingDutchman, TheUglyDu
 	<queries>
 		<query>
 			<formula>Main.ClosedLow--&gt;Main.OpenLow</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>Main.ClosedLow--&gt;Main.Filling</formula>
 			<comment></comment>
 		</query>
 		<query>
