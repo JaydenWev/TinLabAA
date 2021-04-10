@@ -209,7 +209,7 @@ toHigh == false</label>
 			<source ref="id3"/>
 			<target ref="id7"/>
 			<label kind="guard" x="-306" y="34">!containsBoat</label>
-			<label kind="synchronisation" x="-263" y="51">waterLow?</label>
+			<label kind="synchronisation" x="-263" y="51">waterLow!</label>
 			<nail x="-204" y="68"/>
 		</transition>
 		<transition>
@@ -416,7 +416,7 @@ void changePos(bool &amp;ship){
 			<source ref="id17"/>
 			<target ref="id19"/>
 			<label kind="guard" x="-136" y="17">waterLevel &lt;= lowerLevel</label>
-			<label kind="synchronisation" x="-136" y="34">waterLow!</label>
+			<label kind="synchronisation" x="-136" y="34">waterLow?</label>
 			<nail x="-136" y="17"/>
 		</transition>
 		<transition>
