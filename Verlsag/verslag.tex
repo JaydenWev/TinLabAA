@@ -2,6 +2,7 @@
 \documentclass{article}
 \usepackage{graphicx} 
 \usepackage[dutch]{babel}
+\usepackage{verbatim} % for multi line comments
 
 \begin{document}
 \sffamily
@@ -35,40 +36,46 @@ Voor het vak Advanced Algorithms wordt een sluis gemodelleerd. Wij hebben gekoze
 \\\\
 Zie hier een referentie naar Royce~\cite{royce1987managing} en nog een naar Clarke~\cite{modelchecking}\ldots 
 
-
-\section{Requirements}
-De sluis moet aan de volgende requiriments voldoen.
-De sluis moet 
-
-\subsection{Veiligheid}
-\section{Veiligheid}
+\section{Literatuur onderzoek} %resultaten literatuur onderzoek
+\textbf{Veiligheid}\\
 Aan welke veiligheids eigenschappen moet een sluis zich voldoen
-\subsection{subSection 2.1}
+De kamer moet goed afgesloten zijn (waterdicht).
+\begin{itemize}
+\item Het water niveau moet worden gemonitoord.
+\item Hoeveel water in \& hoeveel water uit gaat.
+\end{itemize}
 
-\section{Capaciteit}
-Wat is de capaciteit van een sluis? Hoeveelheid water wat kan worden geaccepteerd en overpomp snelheid.
-\subsection{subSection 3.1}
+\textbf{Capaciteit}\\
+Wat is de capaciteit van een sluis? Hoeveelheid water wat kan worden geaccepteerd en overpomp snelheid.\\
+In de kamer moet minimaal ruimte zijn voor een plezier boot ca.10m, maar dit is niet relevant voor het modelleren.
 
-\section{Efficientie}
-\subsection{subSection 4.1}
+\textbf{Efficientie}\\
 
-\section{Duurzaamheid}
-\subsection{subSection 5.1}
+\textbf{Duurzaamheid}\\
+\section{Requirements} %Requirements van het te bouwen systeem
+De sluis moet aan de volgende requirements voldoen.
 
-veiligheid & capaciteit
-De kamer moet goed afgesloten zijn.(waterdicht)
-	Het water niveau moet worden gemonitoord.
-		Hoeveel water in & hoeveel water uit gaat.
-In de kamer moet minimaal ruimte zijn voor een plezier boot ca. 5m.
-	Niet relevant voor het modelleren
+\section{Specificaties} %Specificaties van het te bouwen systeem
+Harde eisen die gemeten kunnen worden.
+
+\section{Ontwerpen} % Het model gemaakt in UPPAAL
+
+\section{Verificaties}
+\subsection{Temporeel logische constructies}
+\subsection{Resultaten}
 
 
-efficientie & duurzaamheid
 
+\clearpage
+
+
+
+
+\begin{comment}
 A watertight chamber connecting the upper and lower canals, and large enough to enclose one or more boats. The position of the chamber is fixed, but its water level can vary.\\
 A gate (often a pair of "pointing" half-gates) at each end of the chamber. A gate is opened to allow a boat to enter or leave the chamber; when closed, the gate is watertight.\\
 A set of lock gear to empty or fill the chamber as required. This is usually a simple valve (traditionally, a flat panel (paddle) lifted by manually winding a rack and pinion mechanism) which allows water to drain into or out of the chamber; larger locks may use pumps.
-
+\end{comment}
 
 
 
