@@ -141,7 +141,7 @@ toHigh=false</label>
 		<transition>
 			<source ref="id3"/>
 			<target ref="id0"/>
-			<label kind="guard" x="-289" y="-34">!containsBoat</label>
+			<label kind="guard" x="-289" y="-34">containsBoat</label>
 			<label kind="synchronisation" x="-289" y="-17">waterLow!</label>
 		</transition>
 		<transition>
@@ -208,6 +208,7 @@ toHigh == false</label>
 		<transition>
 			<source ref="id3"/>
 			<target ref="id7"/>
+			<label kind="guard" x="-306" y="34">!containsBoat</label>
 			<label kind="synchronisation" x="-263" y="51">waterLow?</label>
 			<nail x="-204" y="68"/>
 		</transition>
