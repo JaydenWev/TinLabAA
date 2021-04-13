@@ -1,9 +1,15 @@
 \babel@toc {dutch}{}
 \contentsline {section}{\numberline {1}Inleiding}{2}{}%
-\contentsline {section}{\numberline {2}Literatuur onderzoek}{2}{}%
-\contentsline {section}{\numberline {3}Requirements}{2}{}%
-\contentsline {section}{\numberline {4}Specificaties}{2}{}%
-\contentsline {section}{\numberline {5}Ontwerpen}{3}{}%
-\contentsline {section}{\numberline {6}Verificaties}{3}{}%
-\contentsline {subsection}{\numberline {6.1}Temporeel logische constructies}{3}{}%
-\contentsline {subsection}{\numberline {6.2}Resultaten}{3}{}%
+\contentsline {section}{\numberline {2}Literatuur onderzoek}{3}{}%
+\contentsline {subsection}{\numberline {2.1}Veiligheid}{3}{}%
+\contentsline {subsubsection}{\numberline {2.1.1}Invloed van wind}{3}{}%
+\contentsline {subsubsection}{\numberline {2.1.2}Vorming van ijs}{3}{}%
+\contentsline {subsection}{\numberline {2.2}Capaciteit}{4}{}%
+\contentsline {subsection}{\numberline {2.3}Efficientie}{4}{}%
+\contentsline {subsection}{\numberline {2.4}Duurzaamheid}{4}{}%
+\contentsline {section}{\numberline {3}Requirements}{4}{}%
+\contentsline {section}{\numberline {4}Specificaties}{4}{}%
+\contentsline {section}{\numberline {5}Ontwerpen}{4}{}%
+\contentsline {section}{\numberline {6}Verificaties}{4}{}%
+\contentsline {subsection}{\numberline {6.1}Temporeel logische constructies}{4}{}%
+\contentsline {subsection}{\numberline {6.2}Resultaten}{4}{}%

@@ -37,9 +37,10 @@ Voor het vak Advanced Algorithms wordt een sluis gemodelleerd. Wij hebben gekoze
 \\\\
 Zie hier een referentie naar latex Companion~\cite{latexcompanion} en nog een naar Einstein~\cite{einstein}\ldots 
 
-\section{Literatuur onderzoek} %resultaten literatuur onderzoek
+\clearpage
 
-\textbf{Veiligheid}\\
+\section{Literatuur onderzoek} %resultaten literatuur onderzoek
+\subsection{Veiligheid}
 Aan welke veiligheids eigenschappen moet een sluis zich voldoen
 De kamer moet goed afgesloten zijn (waterdicht).
 \begin{itemize}
@@ -47,29 +48,45 @@ De kamer moet goed afgesloten zijn (waterdicht).
 \item Hoeveel water in \& hoeveel water uit gaat.
 \end{itemize}
 
-\textbf{Capaciteit}\\
+% Richtlijnen Vaarwegen 2017
+% https://waterrecreatienederland.nl/content/uploads/2018/04/richtlijnen-vaarwegen-2017.pdf
+
+\subsubsection{Invloed van wind} % pagina 70
+Wind kan ervoor zorgen dat boten onbedoeld in beweging worden gebracht. In de huidige tijd kunnen we ervan uitgaan dat de meeste beroepsschepen over een boegschroef  met voldoende vermogen beschikken. De schepen kunnen d.m.v de boegschroef de werking van de wind compenseren. Tevens is het de taak van de schipper om de werking van de wind te anticiperen. De schipper moet het schip op zijn plek houden zodra de sluis wordt benadert of gedurende het gebruik van de sluis.
+
+Hieruit kan worden vernomen dat er geen rekening gehouden hoefd te worden met windkrachten in het model. De verantwoordelijkheid om hiermee juist te handelen wordt bij de schipper gelegd. Dit is dan ook een menselijke handeling en zal niet worden verwerkt in het model\cite{rijkswaterstaat2017}
+
+\vskip0.5cm
+
+\subsubsection{Vorming van ijs}
+Ijsvorming kan een probleem vormen voor een sluis. Ijs kan ervoor zorgen dat de deuren niet meer goed functioneren. Elk type deur heeft zijn eigen gevoeligheden:
+\begin{itemize}
+\item Puntdeuren zijn gevoelig voor ijsvorming en ophoping in en direct voor de deurkassen. Dit zorgt ervoor dat de deuren niet open kunnen gaan.
+\item Enkelvoudige draaideuren zijn ook gevoelig voor ijsvorming voor en ophoping in en direct voor de deurkassen.
+\item Roldeuren kunnen vastlopen in drijvend ijs, dat zich ophoopt. Dit kan leiden tot vastvriezen.
+\item Hefdeuren zijn gevoelig voor aanhechting van ijs. Aangehecht ijs kan op onderdoorvarende schepen kan vallen. Ook kan de deur klemlopen of dusdanig zwaar maken dat de deur te zwaar wordt om te heffen.
+\end{itemize}
+
+Er zijn natuurlijk ook middelen om de sluis ijsvrij te maken. Deze middelen zijn: luchtbellenscherm, kasblaasinstallatie, verwaringselementen of een gesloten constructie.
+
+\vskip0.5cm
+
+{\large \textbf{KEUZE MAKEN WEL OF NIET MODELLEREN}}
+
+\subsection{Capaciteit}
 Wat is de capaciteit van een sluis? Hoeveelheid water wat kan worden geaccepteerd en overpomp snelheid.\\
 In de kamer moet minimaal ruimte zijn voor een plezier boot ca.10m, maar dit is niet relevant voor het modelleren.
 
 \vskip0.5cm
 
-\begin{comment}
-\textbf{Windhinder}\\
-Bij de dimensionering van de voorhaven en de remming- en geleidewerken is het uitgangspunt geweest, dat de meeste beroepsschepen over een boegschroef beschikken met voldoende vermogen om het effect van wind te compenseren. In overige gevallen wordt de windhinder bij kunstwerken opgevangen door anticiperend gedrag van de schipper. Daarom wordt bij het ontwerp geen rekening gehouden met wind. Wel is het van belang er bij de inrichting van het gebied rond de sluis op te letten, dat de blootstelling aan zijwind geleidelijk verloopt.
-% Richtlijnen Vaarwegen 2017
-% https://waterrecreatienederland.nl/content/uploads/2018/04/richtlijnen-
-vaarwegen-2017.pdfHieruit kan worden vernomen dat er geen rekening gehouden hoefd te worden met windkrachten. De verantwoordelijkheid om hiermee juist te handelen wordt bij de schipper gelegd.
-\end{comment}
+\subsection{Efficientie}
 
-\vskip0.5cm
+\subsection{Duurzaamheid}
 
-\textbf{Efficientie}\\
-
-\textbf{Duurzaamheid}\\
 \section{Requirements} %Requirements van het te bouwen systeem
 De sluis moet aan de volgende requirements voldoen.
 \vskip0.5cm
-Met de volgende onderwerpen hoefd geen rekening mee gehouden te worden.
+De volgende onderwerpen vallen buiten de scope van het modelleren. Hier hoeft dus geen rekening meegehouden te worden.
 \begin{itemize}
 \item Windkrachten
 \end{itemize}
@@ -104,6 +121,11 @@ A set of lock gear to empty or fill the chamber as required. This is usually a s
 \newpage
 \bibliography{references} % DIT ZIJN VOORBEELDEN
 \begin{thebibliography}{9}
+\bibitem{rijkswaterstaat2017}
+Rijkswaterstaat (2017).
+\textit{Richtlijnen Vaarwegen 2017}\\
+% Editors. Publisher.
+
 \bibitem{latexcompanion} 
 Michel Goossens, Frank Mittelbach, and Alexander Samarin. 
 \textit{The \LaTeX\ Companion}. 
@@ -123,3 +145,6 @@ Knuth: Computers and Typesetting,
 \end{document}
 
 
+% book:
+% author (release year). \textit{title}\\
+% Editors. Publisher. 
