@@ -33,9 +33,24 @@
 
 \newpage
 \section{Inleiding}
-Voor het vak Advanced Algorithms wordt een sluis gemodelleerd. Wij hebben gekozen voor een shutsluis. Mede omdat we bij deze soort sluis bij schippers kunnen aankloppen voor vragen en informatie. Voor het modelleren van de sluis is onderzoek gedaan om een aantal requirements op te kunnen stellen. Met name de veiligheid is hierbij van belang.
-\\\\
+Nadat er een grondige analyse van het Nederlandse sluizen park is uitgevoerd is gebleken dat een renovatie van een groot aantal sluizen noodzakelijk is. Uit een eerste verkenning is gebleken dat renoveren en tegelijkertijd automatiseren een voordeel kan opleveren. Zo kun je duidelijke verbetering zien in de veiligheid, efficiëntie, capaciteit, onderhoudskosten en duurzaamheid.
+
+Met oog op het onlangs afgesloten klimaatakkoord, en de doelen die behaald moeten worden, heeft de Nederlandse overheid besloten om over te gaan op ingrijpende renovaties van verschillende soorten sluizen. Op het ministerie van infrastructuur en waterstaat mist alleen wel de nodige kennis van ICT en systemen.
+
+Zodoende is aan ons gevraagd een model (of een onderling samenhangend aantal modellen) aan te leveren. Dit kan dan gebruikt worden om verschillende, geautomatiseerde sluizen te realiseren.
+
 Zie hier een referentie naar latex Companion~\cite{latexcompanion} en nog een naar Einstein~\cite{einstein}\ldots 
+
+\clearpage
+
+\section{Doelstelling}
+Er zijn een hoop verschillende soorten sluizen in Nederland, aangezien wij de tijd en middelen hebben voor een enkel type sluis hebben wij de keuze laten vallen op een schutsluis. Dit type sluis is bedoelt om schepen op een hoger of lager water niveau te brengen. Je kunt dit ook wel omschrijven als een waterlift of een botenlift [BRON].
+
+Voor de sluis zal gekeken moeten worden welke stappen er genomen worden en welke hiervan door een persoon gedaan. Omdat wij gevraagd zijn voor het automatiseren van een sluis, zullen we dus moeten kijken naar het vervangen van de handeling van een persoon.
+
+Ook kan er door de automatisering het proces geoptimaliseerd worden, en dus efficiënter gemaakt worden. Er moet dus gekeken worden naar hoe het proces het beste kan worden ontworpen om optimaal van de tijd gebruik te maken. Wel moet rekening gehouden worden met de energie die het kost. Een minimale tijdswinst is een grote energie stijging niet waard. Hier zal zowaar nodig een afweging gemaakt moeten worden.
+
+Door het menselijke toedoen te schrappen kan de veiligheid ook verbeterd worden. Mensen kunnen door verschillende factoren een fout maken of het nu hun schuld is of niet. Machines zijn natuurlijk niet uitgesloten van ‘fouten’. Het is dus belangrijk om te vinden welke mogelijke nieuwe veiligheidsrisico’s erbij komen en dit te vergelijken met de veiligheidsrisico’s die verdwijnen.
 
 \clearpage
 
@@ -82,6 +97,8 @@ Er zijn natuurlijk ook middelen om de sluis ijsvrij te maken. Deze middelen zijn
 {\large \textbf{KEUZE MAKEN WEL OF NIET MODELLEREN}}
 
 \subsection{Capaciteit}
+Onder sluis capaciteit wordt verstaan de hoeveelheid schepen er tegelijk geschut kunnen worden.
+
 Wat is de capaciteit van een sluis? Hoeveelheid water wat kan worden geaccepteerd en overpomp snelheid.\\
 In de kamer moet minimaal ruimte zijn voor een plezier boot ca.10m, maar dit is niet relevant voor het modelleren.
 
@@ -91,18 +108,19 @@ In de kamer moet minimaal ruimte zijn voor een plezier boot ca.10m, maar dit is 
 
 \subsection{Duurzaamheid}
 
+\clearpage
+
 \section{Requirements} %Requirements van het te bouwen systeem
 Het literatuur onderzoek kan gebruikt worden om requirements op te stelling. Om binnen de scope van het modelleren te blijven zullen hier alleen requirements genoemd worden met betrekking tot software. De requirements zijn als volgt:
 \begin{itemize}
 \item In geen geval mogen alle deuren tegelijk openstaan.
 \item Ten alle tijden moet het water niveau worden bij gehouden.
 \item (Als het koud wordt moet de antivries voorzieningen actief worden.)
+
 \end{itemize}
 
 \vskip2cm
 
-De sluis moet aan de volgende requirements voldoen.
-\vskip0.5cm
 De volgende onderwerpen vallen buiten de scope van het modelleren. Hier hoeft dus geen rekening meegehouden te worden.
 \begin{itemize}
 \item Windkrachten
@@ -112,14 +130,33 @@ De volgende onderwerpen vallen buiten de scope van het modelleren. Hier hoeft du
 Harde eisen die gemeten kunnen worden.
 
 \begin{itemize}
-\item Als deur "A" \& "B" mogen niet tegelijk open zijn.
-\item Ten alle tijden moet het water niveau worden bij gehouden.
+\item Als deur "'A"' \& "'B"' mogen niet tegelijk open zijn.
 \item (Als de temperatuur on 0$^{\circ}$C komt moeten de antivries maatregelen geactiveerd worden.)
 \end{itemize}
 
-\section{Ontwerpen} % Het model gemaakt in UPPAAL
+\clearpage
 
-\section{Verificaties}
+\section{Ontwerpen} % Het model gemaakt in UPPAAL
+In de beginsituatie van het model zijn alle deuren gesloten en staat het waterpeil gelijk aan het lage waterpeil in het kanaal. Het model heeft één hoofdcontroller. Deze hoofdcontroller maakt alle beslissingen en heeft het uiteindelijk voor het zeggen wat er moet gaan gebeuren.
+
+Naast de hoofdcontroller zijn er nog een aantal modellen ontworpen ter ondersteuning van de hoofdcontroller. De onderdelen waarvan een model is gemaakt zijn: de deur, waterpomp, watersensor, boot/schip.
+
+
+\vskip0.5cm
+
+Het model van de deur heeft een heel simpel doel. Het moet aangeven of de deur open of dicht staat. Dit model heeft naast de "'open"' en "'dicht"' status ook een opening en closing status. Deze statussen geven aan dat de deur bezig is in een transitie van open naar dicht of andersom. tijdens deze transitie kunnen er bijvoorbeeld nog geen boten worden toegelaten.
+
+\vskip0.5cm
+
+Het waterpomp model heeft 3 statussen. Zijn begin status is de Sleep status. Hierin wacht de waterpomp op een signaal van de hoofdcontroller om te beginnen met het pompen van het water. Afhankelijk van het signaal dat de waterpomp ontvangt schakeld het over op "'WaterIn"' of "'WaterOut"'. Deze statussen pompen water in of uit de sluis, wat ervoor zorgt dat het waternieuwe wordt verhoogt.
+
+Het watersensor model heeft een simpel doel. Het moet de hoogte van het waterpeil weergeven, zodat deze ook in ander modellen, met name de maincontroller, gebruikt kunnen worden.
+
+Het laatste model is die van de boot. De naam is echter een beetje tegenstrijdig met de functie van dit model. Het boot model modelleert niet een schip of de acties daarvan. Dit model heeft als die de positie van het schip weergeven.
+
+\subsection{Verificaties}
+Het is belangrijk om de specificaties te veriefiëren. Omdat deze harde grenzen heeft die.
+
 \subsection{Temporeel logische constructies}
 \subsection{Resultaten}
 
@@ -132,7 +169,7 @@ Harde eisen die gemeten kunnen worden.
 
 \begin{comment}
 A watertight chamber connecting the upper and lower canals, and large enough to enclose one or more boats. The position of the chamber is fixed, but its water level can vary.\\
-A gate (often a pair of "pointing" half-gates) at each end of the chamber. A gate is opened to allow a boat to enter or leave the chamber; when closed, the gate is watertight.\\
+A gate (often a pair of "'pointing"' half-gates) at each end of the chamber. A gate is opened to allow a boat to enter or leave the chamber; when closed, the gate is watertight.\\
 A set of lock gear to empty or fill the chamber as required. This is usually a simple valve (traditionally, a flat panel (paddle) lifted by manually winding a rack and pinion mechanism) which allows water to drain into or out of the chamber; larger locks may use pumps.
 \end{comment}
 
