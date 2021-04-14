@@ -9,7 +9,7 @@
 \contentsline {subsection}{\numberline {2.3}Efficientie}{4}{}%
 \contentsline {subsection}{\numberline {2.4}Duurzaamheid}{4}{}%
 \contentsline {section}{\numberline {3}Requirements}{4}{}%
-\contentsline {section}{\numberline {4}Specificaties}{4}{}%
+\contentsline {section}{\numberline {4}Specificaties}{5}{}%
 \contentsline {section}{\numberline {5}Ontwerpen}{5}{}%
 \contentsline {section}{\numberline {6}Verificaties}{5}{}%
 \contentsline {subsection}{\numberline {6.1}Temporeel logische constructies}{5}{}%
