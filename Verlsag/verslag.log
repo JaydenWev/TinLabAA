@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.3) (preloaded format=pdflatex 2021.4.6)  14 APR 2021 12:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.3) (preloaded format=pdflatex 2021.4.6)  14 APR 2021 12:20
 entering extended mode
 **./verslag.tex
 (verslag.tex
@@ -148,26 +148,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 36--39
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 53--57
+Underfull \hbox (badness 10000) in paragraph at lines 54--58
 
  []
 
+LaTeX Font Info:    Font shape `OT1/cmss/m/it' in size <10> not available
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 65.
 [3
 
-] [4]
+] [4] [5]
 No file verslag.bbl.
-LaTeX Font Info:    Font shape `OT1/cmss/m/it' in size <10> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 133.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 132--135
+Underfull \hbox (badness 10000) in paragraph at lines 133--136
 
  []
 
 LaTeX Font Info:    Font shape `OT1/cmss/m/it' in size <7> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 138.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 139.
 
-[5
+[6
 
 ] (verslag.aux) ) 
 Here is how much of TeX's memory you used:
@@ -177,7 +176,7 @@ Here is how much of TeX's memory you used:
  19508 multiletter control sequences out of 15000+600000
  407946 words of font info for 42 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,4n,74p,488b,204s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 68i,4n,74p,488b,202s stack positions out of 5000i,500n,10000p,200000b,80000s
  <C:\Users\jayde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen
 /ec/dpi600\tcrm1000.pk><D:/Users/jayde/AppData/Local/Programs/MiKTeX/fonts/type
 1/public/amsfonts/cm/cmbx10.pfb><D:/Users/jayde/AppData/Local/Programs/MiKTeX/f
@@ -189,9 +188,9 @@ jayde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi10.pfb>
 <D:/Users/jayde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
 ssi8.pfb><D:/Users/jayde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
 nts/cm/cmtt10.pfb>
-Output written on verslag.pdf (6 pages, 120591 bytes).
+Output written on verslag.pdf (7 pages, 121680 bytes).
 PDF statistics:
- 61 PDF objects out of 1000 (max. 8388607)
+ 66 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
