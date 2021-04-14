@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.3) (preloaded format=pdflatex 2021.4.6)  13 APR 2021 21:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.3) (preloaded format=pdflatex 2021.4.6)  14 APR 2021 12:07
 entering extended mode
 **./verslag.tex
 (verslag.tex
@@ -147,29 +147,34 @@ Underfull \hbox (badness 10000) in paragraph at lines 36--39
 
  []
 
-[2] [3
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 53--57
+
+ []
+
+[3
 
 ] [4]
 No file verslag.bbl.
 LaTeX Font Info:    Font shape `OT1/cmss/m/it' in size <10> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 126.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 133.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--128
+Underfull \hbox (badness 10000) in paragraph at lines 132--135
 
  []
 
 LaTeX Font Info:    Font shape `OT1/cmss/m/it' in size <7> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 131.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 138.
 
 [5
 
 ] (verslag.aux) ) 
 Here is how much of TeX's memory you used:
- 2032 strings out of 479321
- 30759 string characters out of 2856584
- 337963 words of memory out of 3000000
- 19507 multiletter control sequences out of 15000+600000
+ 2033 strings out of 479321
+ 30767 string characters out of 2856584
+ 338963 words of memory out of 3000000
+ 19508 multiletter control sequences out of 15000+600000
  407946 words of font info for 42 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,4n,74p,488b,204s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -184,7 +189,7 @@ jayde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi10.pfb>
 <D:/Users/jayde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
 ssi8.pfb><D:/Users/jayde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
 nts/cm/cmtt10.pfb>
-Output written on verslag.pdf (6 pages, 119248 bytes).
+Output written on verslag.pdf (6 pages, 120591 bytes).
 PDF statistics:
  61 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

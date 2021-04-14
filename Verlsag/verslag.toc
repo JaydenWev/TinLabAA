@@ -2,8 +2,9 @@
 \contentsline {section}{\numberline {1}Inleiding}{2}{}%
 \contentsline {section}{\numberline {2}Literatuur onderzoek}{3}{}%
 \contentsline {subsection}{\numberline {2.1}Veiligheid}{3}{}%
-\contentsline {subsubsection}{\numberline {2.1.1}Invloed van wind}{3}{}%
-\contentsline {subsubsection}{\numberline {2.1.2}Vorming van ijs}{3}{}%
+\contentsline {subsubsection}{\numberline {2.1.1}Deuren}{3}{}%
+\contentsline {subsubsection}{\numberline {2.1.2}Invloed van wind}{3}{}%
+\contentsline {subsubsection}{\numberline {2.1.3}Vorming van ijs}{3}{}%
 \contentsline {subsection}{\numberline {2.2}Capaciteit}{4}{}%
 \contentsline {subsection}{\numberline {2.3}Efficientie}{4}{}%
 \contentsline {subsection}{\numberline {2.4}Duurzaamheid}{4}{}%
