@@ -462,10 +462,14 @@ void changePos(bool &amp;ship){
 	<template>
 		<name>Door</name>
 		<parameter>bool &amp;isOpen,  chan &amp;Open1,  chan &amp;Closed1, chan &amp;Opening1, chan &amp;Closing1</parameter>
-		<declaration>//bool isOpen=false;
-//int[0, 25] r;
+		<declaration>//int[0, 25] r;
+
+clock r;
+
 int doorTime = 60;
-clock r;</declaration>
+
+bool isOpen=false;
+</declaration>
 		<location id="id27" x="-34" y="34">
 			<name x="-25" y="51">Opening</name>
 		</location>
@@ -659,15 +663,19 @@ system Main, FrontDoor, BackDoor, WaterSensor, WaterPump, Titanic, FlyingDutchma
 </system>
 	<queries>
 		<query>
-			<formula>Main.ClosedLow--&gt;Main.Filling</formula>
+			<formula>E&lt;&gt; containsBoat==true</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>A[] not deadlock</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>FrontDoor.Opening--&gt;FrontDoor.Open</formula>
 			<comment></comment>
 		</query>
 		<query>
 			<formula>containsBoat==false--&gt;containsBoat==true</formula>
-			<comment></comment>
-		</query>
-		<query>
-			<formula>E&lt;&gt;containsBoat==true</formula>
 			<comment></comment>
 		</query>
 		<query>
@@ -676,10 +684,6 @@ system Main, FrontDoor, BackDoor, WaterSensor, WaterPump, Titanic, FlyingDutchma
 		</query>
 		<query>
 			<formula>E[]waitingLow==true</formula>
-			<comment></comment>
-		</query>
-		<query>
-			<formula>A[] not deadlock</formula>
 			<comment></comment>
 		</query>
 	</queries>
