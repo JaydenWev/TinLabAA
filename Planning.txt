@@ -1,0 +1,21 @@
+Classes
+Main 		-	main controller
+Queue		-	Houd de wachtrij bij
+Door		-	Simuleerd de deuren
+WaterPump	-	Geeft aan wat er met het water niveau gebeurt
+WaterSensor	-	Geeft aan hoe hoog/laag het water staat
+Chamber		-	De groote van de sluiskamer
+WaterwegUp	-	Buiten de sluis boven
+WaterwegDown-	Buiten de sluis beneden
+Stoplicht	-	Of er een boot in kan gaan
+
+(Boat		-	Locatie van de boot)
+
+Verificatie
+Checken voor deadlock
+Checken deuren niet tegelijk open zijn
+Niet een deur openen als andere deur sluit
+Deuren dicht als waterniveau verandert
+niet beide stoplichten groen
+Deur open als water gelijk aan waterweg
+
