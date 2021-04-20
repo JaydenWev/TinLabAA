@@ -32,7 +32,7 @@ int sharedBoat;</declaration>
 		<name x="5" y="5">Main</name>
 		<declaration>// Place local declarations here.
 bool toHigh, toLow;
-int[0, maxBoatId] boatNum;</declaration>
+int[0, maxBoatId] activeBoatId;</declaration>
 		<location id="id0" x="476" y="-204">
 			<name x="466" y="-238">exitHigh</name>
 		</location>
@@ -81,28 +81,28 @@ int[0, maxBoatId] boatNum;</declaration>
 		<transition>
 			<source ref="id2"/>
 			<target ref="id2"/>
-			<label kind="assignment" x="-960" y="-280">boatNum = 0</label>
+			<label kind="assignment" x="-960" y="-280">activeBoatId = 0</label>
 			<nail x="-918" y="-204"/>
 			<nail x="-816" y="-306"/>
 		</transition>
 		<transition>
 			<source ref="id0"/>
 			<target ref="id0"/>
-			<label kind="assignment" x="552" y="-289">boatNum = 0</label>
+			<label kind="assignment" x="552" y="-289">activeBoatId = 0</label>
 			<nail x="578" y="-204"/>
 			<nail x="476" y="-306"/>
 		</transition>
 		<transition>
 			<source ref="id1"/>
 			<target ref="id1"/>
-			<label kind="assignment" x="484" y="93">boatNum = sharedBoat</label>
+			<label kind="assignment" x="484" y="93">activeBoatId = sharedBoat</label>
 			<nail x="578" y="68"/>
 			<nail x="476" y="170"/>
 		</transition>
 		<transition>
 			<source ref="id3"/>
 			<target ref="id3"/>
-			<label kind="assignment" x="-1003" y="102">boatNum = sharedBoat</label>
+			<label kind="assignment" x="-1003" y="102">activeBoatId = sharedBoat</label>
 			<nail x="-918" y="68"/>
 			<nail x="-816" y="170"/>
 		</transition>
@@ -114,14 +114,14 @@ int[0, maxBoatId] boatNum;</declaration>
 		<transition>
 			<source ref="id1"/>
 			<target ref="id5"/>
-			<label kind="guard" x="357" y="-51">boatNum != 0</label>
+			<label kind="guard" x="357" y="-51">activeBoatId != 0</label>
 			<label kind="assignment" x="357" y="-8">toLow = true</label>
 			<nail x="476" y="-68"/>
 		</transition>
 		<transition>
 			<source ref="id3"/>
 			<target ref="id11"/>
-			<label kind="guard" x="-807" y="-34">boatNum != 0</label>
+			<label kind="guard" x="-807" y="-34">activeBoatId != 0</label>
 			<label kind="assignment" x="-807" y="8">toHigh = true</label>
 			<nail x="-816" y="-68"/>
 		</transition>
