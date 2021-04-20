@@ -27,7 +27,7 @@ chan exitQueueLow, exitQueueHigh;
 
 typedef int[0,10] id_i;
 
-int sharedBoat;</declaration>
+int[0,maxBoatId] sharedBoat;</declaration>
 	<template>
 		<name x="5" y="5">Main</name>
 		<declaration>// Place local declarations here.
@@ -40,10 +40,10 @@ int[0, maxBoatId] activeBoatId;</declaration>
 			<name x="476" y="34">enterHigh</name>
 		</location>
 		<location id="id2" x="-816" y="-204">
-			<name x="-826" y="-238">exitLow</name>
+			<name x="-875" y="-238">exitLow</name>
 		</location>
 		<location id="id3" x="-816" y="68">
-			<name x="-901" y="51">EnterLow</name>
+			<name x="-901" y="42">EnterLow</name>
 		</location>
 		<location id="id4" x="204" y="-204">
 			<name x="179" y="-238">HighClosing</name>
@@ -81,6 +81,7 @@ int[0, maxBoatId] activeBoatId;</declaration>
 		<transition>
 			<source ref="id2"/>
 			<target ref="id2"/>
+			<label kind="guard" x="-960" y="-297">activeBoatId != 0</label>
 			<label kind="assignment" x="-960" y="-280">activeBoatId = 0</label>
 			<nail x="-918" y="-204"/>
 			<nail x="-816" y="-306"/>
@@ -88,6 +89,7 @@ int[0, maxBoatId] activeBoatId;</declaration>
 		<transition>
 			<source ref="id0"/>
 			<target ref="id0"/>
+			<label kind="guard" x="552" y="-306">activeBoatId != 0</label>
 			<label kind="assignment" x="552" y="-289">activeBoatId = 0</label>
 			<nail x="578" y="-204"/>
 			<nail x="476" y="-306"/>
@@ -95,6 +97,7 @@ int[0, maxBoatId] activeBoatId;</declaration>
 		<transition>
 			<source ref="id1"/>
 			<target ref="id1"/>
+			<label kind="guard" x="510" y="76">activeBoatId == 0</label>
 			<label kind="assignment" x="484" y="93">activeBoatId = sharedBoat</label>
 			<nail x="578" y="68"/>
 			<nail x="476" y="170"/>
@@ -102,6 +105,7 @@ int[0, maxBoatId] activeBoatId;</declaration>
 		<transition>
 			<source ref="id3"/>
 			<target ref="id3"/>
+			<label kind="guard" x="-986" y="85">activeBoatId == 0</label>
 			<label kind="assignment" x="-1003" y="102">activeBoatId = sharedBoat</label>
 			<nail x="-918" y="68"/>
 			<nail x="-816" y="170"/>
@@ -109,51 +113,57 @@ int[0, maxBoatId] activeBoatId;</declaration>
 		<transition>
 			<source ref="id0"/>
 			<target ref="id5"/>
+			<label kind="guard" x="484" y="-153">activeBoatId == 0</label>
 			<nail x="476" y="-68"/>
 		</transition>
 		<transition>
 			<source ref="id1"/>
 			<target ref="id5"/>
-			<label kind="guard" x="357" y="-51">activeBoatId != 0</label>
-			<label kind="assignment" x="357" y="-8">toLow = true</label>
+			<label kind="guard" x="484" y="-34">activeBoatId != 0</label>
+			<label kind="assignment" x="484" y="-17">toLow = true</label>
 			<nail x="476" y="-68"/>
 		</transition>
 		<transition>
 			<source ref="id3"/>
 			<target ref="id11"/>
-			<label kind="guard" x="-807" y="-34">activeBoatId != 0</label>
-			<label kind="assignment" x="-807" y="8">toHigh = true</label>
+			<label kind="guard" x="-935" y="-34">activeBoatId != 0</label>
+			<label kind="assignment" x="-918" y="-17">toHigh = true</label>
 			<nail x="-816" y="-68"/>
 		</transition>
 		<transition>
 			<source ref="id2"/>
 			<target ref="id11"/>
+			<label kind="guard" x="-935" y="-153">activeBoatId == 0</label>
 			<nail x="-816" y="-68"/>
 		</transition>
 		<transition>
 			<source ref="id5"/>
 			<target ref="id0"/>
-			<label kind="assignment" x="358" y="-204">toHigh = false</label>
+			<label kind="guard" x="357" y="-246">toHigh</label>
+			<label kind="assignment" x="357" y="-229">toHigh = false</label>
 			<nail x="340" y="-204"/>
 		</transition>
 		<transition>
 			<source ref="id5"/>
 			<target ref="id1"/>
+			<label kind="guard" x="348" y="85">activeBoatId == 0</label>
 			<label kind="synchronisation" x="348" y="68">exitQueueHigh!</label>
-			<label kind="comments" x="340" y="93">if queue not empty</label>
+			<label kind="comments" x="348" y="110">if queue not empty</label>
 			<nail x="340" y="68"/>
 		</transition>
 		<transition>
 			<source ref="id11"/>
 			<target ref="id2"/>
-			<label kind="assignment" x="-798" y="-187">toLow = false</label>
+			<label kind="guard" x="-782" y="-238">toLow</label>
+			<label kind="assignment" x="-781" y="-221">toLow = false</label>
 			<nail x="-688" y="-204"/>
 		</transition>
 		<transition>
 			<source ref="id11"/>
 			<target ref="id3"/>
+			<label kind="guard" x="-799" y="85">activeBoatId == 0</label>
 			<label kind="synchronisation" x="-799" y="68">exitQueueLow!</label>
-			<label kind="comments" x="-807" y="93">If queue notEmpty</label>
+			<label kind="comments" x="-816" y="110">If queue notEmpty</label>
 			<nail x="-688" y="68"/>
 		</transition>
 		<transition>
@@ -164,6 +174,7 @@ int[0, maxBoatId] activeBoatId;</declaration>
 		<transition>
 			<source ref="id5"/>
 			<target ref="id4"/>
+			<label kind="guard" x="222" y="-170">!toHigh</label>
 			<label kind="synchronisation" x="213" y="-153">closingHigh!</label>
 		</transition>
 		<transition>
@@ -175,6 +186,7 @@ int[0, maxBoatId] activeBoatId;</declaration>
 		<transition>
 			<source ref="id8"/>
 			<target ref="id6"/>
+			<label kind="guard" x="86" y="-34">!toLow</label>
 			<label kind="synchronisation" x="86" y="-13">openingHigh!</label>
 		</transition>
 		<transition>
@@ -194,12 +206,14 @@ int[0, maxBoatId] activeBoatId;</declaration>
 		<transition>
 			<source ref="id8"/>
 			<target ref="id7"/>
+			<label kind="guard" x="-152" y="-238">!toHigh</label>
 			<label kind="synchronisation" x="-135" y="-221">pumpDown!</label>
 			<nail x="68" y="-204"/>
 		</transition>
 		<transition>
 			<source ref="id13"/>
 			<target ref="id9"/>
+			<label kind="guard" x="-390" y="34">!toLow</label>
 			<label kind="synchronisation" x="-390" y="51">pumpUp!</label>
 			<nail x="-408" y="68"/>
 		</transition>
@@ -211,6 +225,7 @@ int[0, maxBoatId] activeBoatId;</declaration>
 		<transition>
 			<source ref="id11"/>
 			<target ref="id10"/>
+			<label kind="guard" x="-646" y="-170">!toLow</label>
 			<label kind="synchronisation" x="-662" y="-157">closingLow!</label>
 		</transition>
 		<transition>
@@ -222,6 +237,7 @@ int[0, maxBoatId] activeBoatId;</declaration>
 		<transition>
 			<source ref="id13"/>
 			<target ref="id12"/>
+			<label kind="guard" x="-526" y="-34">!toHigh</label>
 			<label kind="synchronisation" x="-534" y="-21">openingLow!</label>
 		</transition>
 	</template>
@@ -273,7 +289,9 @@ int exitQueue() {
             temp = queue[0]; // uit de queue stappen
         for (i = 0; i &lt; queueSize-1 ; i++){
             queue[i] = queue[i+1];
-        } queueSize--;
+        }
+        queue[queueSize-1] = 0; // laatste plek wordt leeg
+        queueSize--;
         return temp;
     }
     else {
