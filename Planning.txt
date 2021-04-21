@@ -1,13 +1,14 @@
 Classes
-Main 		-	main controller
-Queue		-	Houd de wachtrij bij
-Door		-	Simuleerd de deuren
-WaterPump	-	Geeft aan wat er met het water niveau gebeurt
-WaterSensor	-	Geeft aan hoe hoog/laag het water staat
+-Main 		-	main controller
+-Queue		-	Houd de wachtrij bij
+-Door		-	Simuleerd de deuren
+-WaterPump	-	Geeft aan wat er met het water niveau gebeurt
+-WaterSensor	-	Geeft aan hoe hoog/laag het water staat
 Chamber		-	De groote van de sluiskamer
 WaterwegUp	-	Buiten de sluis boven
 WaterwegDown-	Buiten de sluis beneden
-Stoplicht	-	Of er een boot in kan gaan
+-Stoplicht	-	Of er een boot in kan gaan
+AntiVries	-	als temp onder 0 shit goes on
 
 (Boat		-	Locatie van de boot)
 
