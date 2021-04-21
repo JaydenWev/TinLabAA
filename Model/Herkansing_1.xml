@@ -163,7 +163,7 @@ int[0, maxBoatId] activeBoatId;</declaration>
 			<target ref="id3"/>
 			<label kind="guard" x="-799" y="85">activeBoatId == 0</label>
 			<label kind="synchronisation" x="-799" y="68">exitQueueLow!</label>
-			<label kind="comments" x="-816" y="110">If queue notEmpty</label>
+			<label kind="comments" x="-807" y="110">If queue notEmpty</label>
 			<nail x="-688" y="68"/>
 		</transition>
 		<transition>
@@ -450,6 +450,33 @@ const int doorTime = 60;</declaration>
 			<label kind="assignment" x="-42" y="-76">waterLevel++</label>
 			<nail x="59" y="-76"/>
 			<nail x="-68" y="-76"/>
+		</transition>
+	</template>
+	<template>
+		<name>TrafficLight</name>
+		<location id="id23" x="93" y="-76">
+			<name x="83" y="-110">Orange</name>
+		</location>
+		<location id="id24" x="-77" y="-76">
+			<name x="-87" y="-110">Green</name>
+		</location>
+		<location id="id25" x="-247" y="-76">
+			<name x="-257" y="-110">Red</name>
+		</location>
+		<init ref="id25"/>
+		<transition>
+			<source ref="id23"/>
+			<target ref="id25"/>
+			<nail x="93" y="26"/>
+			<nail x="-247" y="26"/>
+		</transition>
+		<transition>
+			<source ref="id24"/>
+			<target ref="id23"/>
+		</transition>
+		<transition>
+			<source ref="id25"/>
+			<target ref="id24"/>
 		</transition>
 	</template>
 	<system>// Place template instantiations here.
