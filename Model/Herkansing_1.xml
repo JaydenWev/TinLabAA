@@ -12,22 +12,26 @@ int[0,5] waterLevelLow = 2;
 int[5,10] waterLevelHigh = 10;
 
 // kanalen
-    // deur
+
+// deur
 chan openingLow, openedLow, closingLow, closedLow;
 chan openingHigh, openedHigh, closingHigh, closedHigh;
 
-    // waterSensor
+// waterSensor
 chan waterUp, waterDown;
-    // waterPump
+// waterPump
 chan pumpUp, pumpDown, pumpOff;
 
-    // queue
+// queue
 const int maxBoatId = 10;
 chan exitQueueLow, exitQueueHigh;
 
 typedef int[0,10] id_i;
 
-int[0,maxBoatId] sharedBoat;</declaration>
+int[0,maxBoatId] sharedBoat;
+
+// trafficLight
+chan lightLowOff, lightLowOn, lightHighOff, lightHighOn;</declaration>
 	<template>
 		<name x="5" y="5">Main</name>
 		<declaration>// Place local declarations here.
@@ -82,7 +86,7 @@ int[0, maxBoatId] activeBoatId;</declaration>
 			<source ref="id2"/>
 			<target ref="id2"/>
 			<label kind="guard" x="-960" y="-297">activeBoatId != 0</label>
-			<label kind="assignment" x="-960" y="-280">activeBoatId = 0</label>
+			<label kind="assignment" x="-960" y="-280">activeBoatId := 0</label>
 			<nail x="-918" y="-204"/>
 			<nail x="-816" y="-306"/>
 		</transition>
@@ -90,23 +94,25 @@ int[0, maxBoatId] activeBoatId;</declaration>
 			<source ref="id0"/>
 			<target ref="id0"/>
 			<label kind="guard" x="552" y="-306">activeBoatId != 0</label>
-			<label kind="assignment" x="552" y="-289">activeBoatId = 0</label>
+			<label kind="assignment" x="552" y="-289">activeBoatId := 0</label>
 			<nail x="578" y="-204"/>
 			<nail x="476" y="-306"/>
 		</transition>
 		<transition>
 			<source ref="id1"/>
 			<target ref="id1"/>
-			<label kind="guard" x="510" y="76">activeBoatId == 0</label>
-			<label kind="assignment" x="484" y="93">activeBoatId = sharedBoat</label>
+			<label kind="guard" x="476" y="161">activeBoatId == 0</label>
+			<label kind="synchronisation" x="476" y="178">exitQueueHigh?</label>
+			<label kind="assignment" x="476" y="195">activeBoatId := sharedBoat</label>
 			<nail x="578" y="68"/>
 			<nail x="476" y="170"/>
 		</transition>
 		<transition>
 			<source ref="id3"/>
 			<target ref="id3"/>
-			<label kind="guard" x="-986" y="85">activeBoatId == 0</label>
-			<label kind="assignment" x="-1003" y="102">activeBoatId = sharedBoat</label>
+			<label kind="guard" x="-935" y="161">activeBoatId == 0</label>
+			<label kind="synchronisation" x="-935" y="178">exitQueueLow?</label>
+			<label kind="assignment" x="-935" y="195">activeBoatId := sharedBoat</label>
 			<nail x="-918" y="68"/>
 			<nail x="-816" y="170"/>
 		</transition>
@@ -120,14 +126,16 @@ int[0, maxBoatId] activeBoatId;</declaration>
 			<source ref="id1"/>
 			<target ref="id5"/>
 			<label kind="guard" x="484" y="-34">activeBoatId != 0</label>
-			<label kind="assignment" x="484" y="-17">toLow = true</label>
+			<label kind="synchronisation" x="484" y="-17">lightHighOff!</label>
+			<label kind="assignment" x="484" y="0">toLow := true</label>
 			<nail x="476" y="-68"/>
 		</transition>
 		<transition>
 			<source ref="id3"/>
 			<target ref="id11"/>
 			<label kind="guard" x="-935" y="-34">activeBoatId != 0</label>
-			<label kind="assignment" x="-918" y="-17">toHigh = true</label>
+			<label kind="synchronisation" x="-935" y="-17">lightLowOff!</label>
+			<label kind="assignment" x="-935" y="0">toHigh := true</label>
 			<nail x="-816" y="-68"/>
 		</transition>
 		<transition>
@@ -140,29 +148,29 @@ int[0, maxBoatId] activeBoatId;</declaration>
 			<source ref="id5"/>
 			<target ref="id0"/>
 			<label kind="guard" x="357" y="-246">toHigh</label>
-			<label kind="assignment" x="357" y="-229">toHigh = false</label>
+			<label kind="assignment" x="357" y="-229">toHigh := false</label>
 			<nail x="340" y="-204"/>
 		</transition>
 		<transition>
 			<source ref="id5"/>
 			<target ref="id1"/>
 			<label kind="guard" x="348" y="85">activeBoatId == 0</label>
-			<label kind="synchronisation" x="348" y="68">exitQueueHigh!</label>
+			<label kind="synchronisation" x="357" y="68">lightHighOn!</label>
 			<label kind="comments" x="348" y="110">if queue not empty</label>
 			<nail x="340" y="68"/>
 		</transition>
 		<transition>
 			<source ref="id11"/>
 			<target ref="id2"/>
-			<label kind="guard" x="-782" y="-238">toLow</label>
-			<label kind="assignment" x="-781" y="-221">toLow = false</label>
+			<label kind="guard" x="-783" y="-238">toLow</label>
+			<label kind="assignment" x="-782" y="-221">toLow := false</label>
 			<nail x="-688" y="-204"/>
 		</transition>
 		<transition>
 			<source ref="id11"/>
 			<target ref="id3"/>
 			<label kind="guard" x="-799" y="85">activeBoatId == 0</label>
-			<label kind="synchronisation" x="-799" y="68">exitQueueLow!</label>
+			<label kind="synchronisation" x="-799" y="68">lightLowOn!</label>
 			<label kind="comments" x="-807" y="110">If queue notEmpty</label>
 			<nail x="-688" y="68"/>
 		</transition>
@@ -181,7 +189,7 @@ int[0, maxBoatId] activeBoatId;</declaration>
 			<source ref="id6"/>
 			<target ref="id5"/>
 			<label kind="synchronisation" x="229" y="-8">openedHigh?</label>
-			<label kind="assignment" x="178" y="8">waterLevel = waterLevelHigh</label>
+			<label kind="assignment" x="178" y="8">waterLevel := waterLevelHigh</label>
 		</transition>
 		<transition>
 			<source ref="id8"/>
@@ -213,8 +221,8 @@ int[0, maxBoatId] activeBoatId;</declaration>
 		<transition>
 			<source ref="id13"/>
 			<target ref="id9"/>
-			<label kind="guard" x="-390" y="34">!toLow</label>
-			<label kind="synchronisation" x="-390" y="51">pumpUp!</label>
+			<label kind="guard" x="-399" y="25">!toLow</label>
+			<label kind="synchronisation" x="-399" y="42">pumpUp!</label>
 			<nail x="-408" y="68"/>
 		</transition>
 		<transition>
@@ -231,14 +239,14 @@ int[0, maxBoatId] activeBoatId;</declaration>
 		<transition>
 			<source ref="id12"/>
 			<target ref="id11"/>
-			<label kind="synchronisation" x="-662" y="-21">openedLow?</label>
-			<label kind="assignment" x="-679" y="4">waterLevel = waterLevelLow</label>
+			<label kind="synchronisation" x="-680" y="-17">openedLow?</label>
+			<label kind="assignment" x="-679" y="4">waterLevel := waterLevelLow</label>
 		</transition>
 		<transition>
 			<source ref="id13"/>
 			<target ref="id12"/>
-			<label kind="guard" x="-526" y="-34">!toHigh</label>
-			<label kind="synchronisation" x="-534" y="-21">openingLow!</label>
+			<label kind="guard" x="-510" y="-34">!toHigh</label>
+			<label kind="synchronisation" x="-510" y="-17">openingLow!</label>
 		</transition>
 	</template>
 	<template>
@@ -307,8 +315,8 @@ int exitQueue() {
 		<transition>
 			<source ref="id14"/>
 			<target ref="id14"/>
-			<label kind="synchronisation" x="-731" y="-76">exiting?</label>
-			<label kind="assignment" x="-731" y="-59">sharedBoat = exitQueue()</label>
+			<label kind="synchronisation" x="-731" y="-76">exiting!</label>
+			<label kind="assignment" x="-731" y="-59">sharedBoat := exitQueue()</label>
 			<nail x="-620" y="-59"/>
 			<nail x="-739" y="-59"/>
 		</transition>
@@ -454,6 +462,8 @@ const int doorTime = 60;</declaration>
 	</template>
 	<template>
 		<name>TrafficLight</name>
+		<parameter>chan &amp;off, chan &amp;on</parameter>
+		<declaration>clock l;</declaration>
 		<location id="id23" x="93" y="-76">
 			<name x="83" y="-110">Orange</name>
 		</location>
@@ -467,27 +477,36 @@ const int doorTime = 60;</declaration>
 		<transition>
 			<source ref="id23"/>
 			<target ref="id25"/>
+			<label kind="synchronisation" x="-229" y="9">off?</label>
 			<nail x="93" y="26"/>
 			<nail x="-247" y="26"/>
 		</transition>
 		<transition>
 			<source ref="id24"/>
 			<target ref="id23"/>
+			<label kind="guard" x="-34" y="-110">l &gt;= 30</label>
 		</transition>
 		<transition>
 			<source ref="id25"/>
 			<target ref="id24"/>
+			<label kind="synchronisation" x="-229" y="-93">on?</label>
+			<label kind="assignment" x="-229" y="-76">l := 0</label>
 		</transition>
 	</template>
 	<system>// Place template instantiations here.
 // Process = Template();
 LowDoor = Door(openingLow, openedLow, closingLow, closedLow);
 HighDoor = Door(openingHigh, openedHigh, closingHigh, closedHigh);
+
 QueueLow = Queue(exitQueueLow);
 QueueHigh = Queue(exitQueueHigh);
 
+LightLow = TrafficLight(lightLowOff, lightLowOn);
+LightHigh = TrafficLight(lightHighOff, lightHighOn);
+
+
 // List one or more processes to be composed into a system.
-system Main, LowDoor, HighDoor, WaterSensor, WaterPump, QueueLow, QueueHigh;
+system Main, LowDoor, HighDoor, WaterSensor, WaterPump, QueueLow, QueueHigh, LightHigh, LightLow;
 
 </system>
 	<queries>
