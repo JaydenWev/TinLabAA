@@ -20,3 +20,9 @@ Deuren dicht als waterniveau verandert
 niet beide stoplichten groen
 Deur open als water gelijk aan waterweg
 
+Queue, Door
+	1 parameter meegeven(id)
+	in channel aangeven welke id het moet synchen
+	para: id id_queue
+	main: exitQueue[0]
+	Queue: exitQueue
