@@ -3,6 +3,7 @@
 \usepackage{graphicx} 
 \usepackage[dutch]{babel}
 \usepackage{verbatim} % for multi line comments
+\usepackage{xcolor}
 
 \begin{document}
 \graphicspath{{../Images/}}
@@ -31,7 +32,7 @@
 \newpage
 \tableofcontents
 
-\newpage
+\clearpage %====================================================================
 \section{Inleiding}
 Nadat er een grondige analyse van het Nederlandse sluizen park is uitgevoerd is gebleken dat een renovatie van een groot aantal sluizen noodzakelijk is. Uit een eerste verkenning is gebleken dat renoveren en tegelijkertijd automatiseren een voordeel kan opleveren. Zo kun je duidelijke verbetering zien in de veiligheid, efficiëntie, capaciteit, onderhoudskosten en duurzaamheid.
 
@@ -41,8 +42,7 @@ Zodoende is aan ons gevraagd een model (of een onderling samenhangend aantal mod
 
 Zie hier een referentie naar latex Companion~\cite{latexcompanion} en nog een naar Einstein~\cite{einstein}\ldots 
 
-\clearpage
-
+\clearpage %====================================================================
 \section{Doelstelling}
 Er zijn een hoop verschillende soorten sluizen in Nederland, aangezien wij de tijd en middelen hebben voor een enkel type sluis hebben wij de keuze laten vallen op een schutsluis. Dit type sluis is bedoelt om schepen op een hoger of lager water niveau te brengen. Je kunt dit ook wel omschrijven als een waterlift of een botenlift [BRON].
 
@@ -52,8 +52,8 @@ Ook kan er door de automatisering het proces geoptimaliseerd worden, en dus effi
 
 Door het menselijke toedoen te schrappen kan de veiligheid ook verbeterd worden. Mensen kunnen door verschillende factoren een fout maken of het nu hun schuld is of niet. Machines zijn natuurlijk niet uitgesloten van ‘fouten’. Het is dus belangrijk om te vinden welke mogelijke nieuwe veiligheidsrisico’s erbij komen en dit te vergelijken met de veiligheidsrisico’s die verdwijnen.
 
-\clearpage
 
+\clearpage %====================================================================
 \section{Literatuur onderzoek} %resultaten literatuur onderzoek
 
 \subsection{Veiligheid}
@@ -94,7 +94,7 @@ Er zijn natuurlijk ook middelen om de sluis ijsvrij te maken. Deze middelen zijn
 
 \vskip0.5cm
 
-{\large \textbf{KEUZE MAKEN WEL OF NIET MODELLEREN}}
+{\large\color{red}\textbf{KEUZE MAKEN WEL OF NIET MODELLEREN}}
 
 \subsection{Capaciteit}
 Onder sluis capaciteit wordt verstaan de hoeveelheid schepen er tegelijk geschut kunnen worden.
@@ -122,12 +122,52 @@ Het volgende onderwerp valt buiten de scope van het modelleren. Hier hoeft dus g
 
 \begin{itemize}
 \item Deur "'A"' \& "'B"' mogen niet tegelijk open zijn.
-
 \end{itemize}
 
-\clearpage
+\vskip2cm
+{\Huge\color{red} \textbf{TO BE FINISHED}}
 
+\clearpage %====================================================================
+\section{Verificatie}
+\begin{itemize}
+\item We controleren of er geen deadlock in het systeem zit. Als dit wel het geval is kan het systeem vastlopen en is er menselijke interventie nodig om het probleem te verhelpen.
+{\center A[ ] not deadlock.\\}
+\vskip0.5cm
+
+\item Twee deuren mogen op geen enkel moment samen open zijn. Een contstante stroming van hoog naar laag is niet gewenst in een sluis. Hiervoor controleren we op de open states van beide deuren actief zijn.
+{\center A [ ] not (Door(0).Open == Door(1).Open == true)\\} %Als die verificatie zo werkt
+\vskip0.5cm
+
+\item Hetzelfde geld voor de stoplichten. je wilt niet dat beide stoplichten op groen staan, ongeacht de state van de sluisdeur aan desbetreffende zeiden.
+{\center A [ ] not (TrafficLight(0).Green == TrafficLight(1).Green == true)\\}
+\end{itemize}
+
+Het kan niet zo zijn dat er een boot de sluis binnengaat met als bestemming de hoge \textbf{en} de lage kant.
+{\center A [ ] not (toHigh == toLow == true)\\}
+
+\vskip2cm
+{\Huge\color{red} \textbf{TO BE FINISHED}}
+\vskip2cm
+
+\subsection{Liveness}
+\begin{itemize}
+
+\item Nadat de deuren zijn geopend moeten ze een keer gesloten worden. Zodat derest van de cyclus veilig door kan gaan.
+{\center Door(0).Open $\rightarrow$ Door.(0).Closed\\
+Door(1).Open $\rightarrow$ Door.(1).Closed\\}
+
+\vskip0.5cm
+\item Een schip dat de sluis in gaat, zal altijd de sluis ook weer uitgaan.
+{\center(activeBoatId $>$ 0) $\rightarrow$ (activeBoatId == 0)\\}
+\end{itemize}
+
+\vskip2cm
+{\Huge\color{red} \textbf{TO BE FINISHED}}
+
+
+\clearpage %====================================================================
 \section{Ontwerpen} % Het model gemaakt in UPPAAL
+{\huge\color{red} \textbf{NEW MODEL HERSCHRIJVEN}}\\
 In de beginsituatie van het model zijn alle deuren gesloten en staat het waterpeil gelijk aan het lage waterpeil in het kanaal. Het model heeft één hoofdcontroller. Deze hoofdcontroller maakt alle beslissingen en heeft het uiteindelijk voor het zeggen wat er moet gaan gebeuren.
 
 Naast de hoofdcontroller zijn er nog een aantal modellen ontworpen ter ondersteuning van de hoofdcontroller. De onderdelen waarvan een model is gemaakt zijn: de deur, waterpomp, watersensor, boot/schip.
@@ -147,13 +187,7 @@ Het laatste model is die van de boot. De naam is echter een beetje tegenstrijdig
 
 
 
-
-
-\clearpage
-
-
-
-
+\clearpage %====================================================================
 \begin{comment}
 A watertight chamber connecting the upper and lower canals, and large enough to enclose one or more boats. The position of the chamber is fixed, but its water level can vary.\\
 A gate (often a pair of "'pointing"' half-gates) at each end of the chamber. A gate is opened to allow a boat to enter or leave the chamber; when closed, the gate is watertight.\\
@@ -163,9 +197,7 @@ A set of lock gear to empty or fill the chamber as required. This is usually a s
 
 
 
-\newpage
-
-\newpage
+\clearpage %====================================================================
 \bibliography{references} % DIT ZIJN VOORBEELDEN
 \begin{thebibliography}{9}
 \bibitem{rijkswaterstaat2017}
