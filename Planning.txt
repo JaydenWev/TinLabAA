@@ -26,3 +26,4 @@ Queue, Door
 	para: id id_queue
 	main: exitQueue[0]
 	Queue: exitQueue
+Door.opening state moet niet in de main zichtbaar zijn
