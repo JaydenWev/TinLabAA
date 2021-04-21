@@ -67,7 +67,7 @@ int[0, maxBoatId] activeBoatId;</declaration>
 		</location>
 		<location id="id9" x="-170" y="68">
 			<name x="-212" y="34">Filling</name>
-			<label kind="invariant" x="-238" y="85">waterLevel &lt;= waterLevelHigh</label>
+			<label kind="invariant" x="-255" y="93">waterLevel &lt;= waterLevelHigh</label>
 		</location>
 		<location id="id10" x="-544" y="-204">
 			<name x="-578" y="-238">LowCLosing</name>
@@ -177,19 +177,19 @@ int[0, maxBoatId] activeBoatId;</declaration>
 		<transition>
 			<source ref="id4"/>
 			<target ref="id8"/>
-			<label kind="synchronisation" x="86" y="-157">closedHigh?</label>
+			<label kind="synchronisation" x="93" y="-144">closedHigh?</label>
 		</transition>
 		<transition>
 			<source ref="id5"/>
 			<target ref="id4"/>
-			<label kind="guard" x="222" y="-170">!toHigh</label>
-			<label kind="synchronisation" x="213" y="-153">closingHigh!</label>
+			<label kind="guard" x="211" y="-161">!toHigh</label>
+			<label kind="synchronisation" x="212" y="-144">closingHigh!</label>
 		</transition>
 		<transition>
 			<source ref="id6"/>
 			<target ref="id5"/>
-			<label kind="synchronisation" x="229" y="-8">openedHigh?</label>
-			<label kind="assignment" x="178" y="8">waterLevel := waterLevelHigh</label>
+			<label kind="synchronisation" x="204" y="-8">openedHigh?</label>
+			<label kind="assignment" x="204" y="8">waterLevel := waterLevelHigh</label>
 		</transition>
 		<transition>
 			<source ref="id8"/>
@@ -207,14 +207,14 @@ int[0, maxBoatId] activeBoatId;</declaration>
 		<transition>
 			<source ref="id9"/>
 			<target ref="id8"/>
-			<label kind="guard" x="-161" y="34">waterLevel &gt;= waterLevelHigh</label>
-			<label kind="synchronisation" x="-161" y="51">pumpOff!</label>
+			<label kind="guard" x="-153" y="34">waterLevel &gt;= waterLevelHigh</label>
+			<label kind="synchronisation" x="-153" y="51">pumpOff!</label>
 			<nail x="68" y="68"/>
 		</transition>
 		<transition>
 			<source ref="id8"/>
 			<target ref="id7"/>
-			<label kind="guard" x="-152" y="-238">!toHigh</label>
+			<label kind="guard" x="-136" y="-238">!toHigh</label>
 			<label kind="synchronisation" x="-135" y="-221">pumpDown!</label>
 			<nail x="68" y="-204"/>
 		</transition>
@@ -233,7 +233,7 @@ int[0, maxBoatId] activeBoatId;</declaration>
 		<transition>
 			<source ref="id11"/>
 			<target ref="id10"/>
-			<label kind="guard" x="-646" y="-170">!toLow</label>
+			<label kind="guard" x="-663" y="-170">!toLow</label>
 			<label kind="synchronisation" x="-662" y="-157">closingLow!</label>
 		</transition>
 		<transition>
