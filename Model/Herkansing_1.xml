@@ -493,5 +493,97 @@ system Main, Door, WaterSensor, WaterPump, TrafficLight, Queue;
 			<formula>A[] not deadlock</formula>
 			<comment></comment>
 		</query>
+		<query>
+			<formula></formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>A[] not (Door(0).Open &amp;&amp; Door(1).Open)</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>A[] not (Door(0).Opening &amp;&amp; Door(1).Opening)</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>A[] not (Door(0).Opening &amp;&amp; Door(1).Open)</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>A[] not (Door(1).Opening &amp;&amp; Door(0).Open)</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula></formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>A[] not (WaterPump.PumpIn &amp;&amp; Door(0).Open)</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>A[] not (WaterPump.PumpOut &amp;&amp; Door(0).Open)</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>A[] not (WaterPump.PumpIn &amp;&amp; Door(1).Open)</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>A[] not (WaterPump.PumpOut &amp;&amp; Door(1).Open)</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>A[] not (TrafficLight(0).Green &amp;&amp; TrafficLight(1).Green)</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>A[] not (Main.toHigh &amp;&amp; Main.toLow)</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula></formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>A[] not (WaterPump.PumpIn &amp;&amp; !Door(0).Closed)
+</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>A[] not (WaterPump.PumpIn &amp;&amp; !Door(1).Closed)
+</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>A[] not (WaterPump.PumpOut &amp;&amp; !Door(0).Closed)
+</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>A[] not (WaterPump.PumpOut &amp;&amp; !Door(1).Closed)
+</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula></formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>Door(0).Open --&gt; Door(0).Closed</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>Door(1).Open --&gt; Door(1).Closed</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>Main.activeBoatId != 0 --&gt; Main.activeBoatId == 0</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula></formula>
+			<comment></comment>
+		</query>
 	</queries>
 </nta>
