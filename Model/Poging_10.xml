@@ -468,7 +468,7 @@ clock r;
 
 int doorTime = 60;
 
-bool isOpen=false;
+//bool isOpen=false;
 </declaration>
 		<location id="id27" x="-34" y="34">
 			<name x="-25" y="51">Opening</name>
