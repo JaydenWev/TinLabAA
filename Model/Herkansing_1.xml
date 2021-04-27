@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
 <nta>
-	<declaration>// Place global declarations here.
-bool nogo = false;
-
+	<declaration>// Declarations
 clock TimeElapsed;
 
 typedef int[0,10] id_i;
@@ -42,7 +40,6 @@ const int maxLights = 2;
 typedef int[0, maxLights - 1] l_id;
 
 chan lightOn[l_id], lightOff[l_id];
-chan lightLowOff, lightLowOn, lightHighOff, lightHighOn;
 
 // channel queue</declaration>
 	<template>
@@ -127,7 +124,7 @@ int[0, maxBoatId] activeBoatId;</declaration>
 			<source ref="id1"/>
 			<target ref="id4"/>
 			<label kind="guard" x="484" y="-34">activeBoatId != 0</label>
-			<label kind="synchronisation" x="484" y="-17">lightHighOff!</label>
+			<label kind="synchronisation" x="484" y="-17">lightOff[1]!</label>
 			<label kind="assignment" x="484" y="0">toLow := true</label>
 			<nail x="476" y="-68"/>
 		</transition>
@@ -156,7 +153,7 @@ int[0, maxBoatId] activeBoatId;</declaration>
 			<source ref="id4"/>
 			<target ref="id1"/>
 			<label kind="guard" x="348" y="85">activeBoatId == 0</label>
-			<label kind="synchronisation" x="357" y="68">lightHighOn!</label>
+			<label kind="synchronisation" x="357" y="68">lightOn[1]!</label>
 			<label kind="comments" x="348" y="110">if queue not empty</label>
 			<nail x="340" y="68"/>
 		</transition>
