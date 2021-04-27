@@ -19,8 +19,6 @@ const int maxDoor = 2;
 typedef int[0,maxDoor - 1] d_id;
 
 chan opening[d_id], closing[d_id];
-chan openingLow, openedLow, closingLow, closedLow;
-chan openingHigh, openedHigh, closingHigh, closedHigh;
 
 // waterSensor
 chan waterUp, waterDown;
@@ -40,6 +38,10 @@ chan queueChan[q_id];
 int[0,maxBoatId] sharedBoat;
 
 // trafficLight
+const int maxLights = 2;
+typedef int[0, maxLights - 1] l_id;
+
+chan lightOn[l_id], lightOff[l_id];
 chan lightLowOff, lightLowOn, lightHighOff, lightHighOn;
 
 // channel queue</declaration>
@@ -133,7 +135,7 @@ int[0, maxBoatId] activeBoatId;</declaration>
 			<source ref="id3"/>
 			<target ref="id8"/>
 			<label kind="guard" x="-935" y="-34">activeBoatId != 0</label>
-			<label kind="synchronisation" x="-935" y="-17">lightLowOff!</label>
+			<label kind="synchronisation" x="-935" y="-17">lightOff[0]!</label>
 			<label kind="assignment" x="-935" y="0">toHigh := true</label>
 			<nail x="-816" y="-68"/>
 		</transition>
@@ -169,7 +171,7 @@ int[0, maxBoatId] activeBoatId;</declaration>
 			<source ref="id8"/>
 			<target ref="id3"/>
 			<label kind="guard" x="-799" y="85">activeBoatId == 0</label>
-			<label kind="synchronisation" x="-799" y="68">lightLowOn!</label>
+			<label kind="synchronisation" x="-799" y="68">lightOn[0]!</label>
 			<label kind="comments" x="-807" y="110">If queue notEmpty</label>
 			<nail x="-688" y="68"/>
 		</transition>
@@ -450,7 +452,7 @@ int exitQueue() {
 	</template>
 	<template>
 		<name>TrafficLight</name>
-		<parameter>chan &amp;off, chan &amp;on</parameter>
+		<parameter>l_id light</parameter>
 		<declaration>clock l;</declaration>
 		<location id="id19" x="93" y="-76">
 			<name x="83" y="-110">Orange</name>
@@ -465,7 +467,7 @@ int exitQueue() {
 		<transition>
 			<source ref="id19"/>
 			<target ref="id21"/>
-			<label kind="synchronisation" x="-229" y="9">off?</label>
+			<label kind="synchronisation" x="-229" y="8">lightOff[light]?</label>
 			<nail x="93" y="26"/>
 			<nail x="-247" y="26"/>
 		</transition>
@@ -477,19 +479,16 @@ int exitQueue() {
 		<transition>
 			<source ref="id21"/>
 			<target ref="id20"/>
-			<label kind="synchronisation" x="-229" y="-93">on?</label>
+			<label kind="synchronisation" x="-229" y="-93">lightOn[light]?</label>
 			<label kind="assignment" x="-229" y="-76">l := 0</label>
 		</transition>
 	</template>
 	<system>// Place template instantiations here.
 // Process = Template();
 
-LightLow = TrafficLight(lightLowOff, lightLowOn);
-LightHigh = TrafficLight(lightHighOff, lightHighOn);
-
 
 // List one or more processes to be composed into a system.
-system Main, Door, WaterSensor, WaterPump, LightHigh, LightLow, Queue;
+system Main, Door, WaterSensor, WaterPump, TrafficLight, Queue;
 
 </system>
 	<queries>
