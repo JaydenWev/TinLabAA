@@ -40,7 +40,6 @@ Met oog op het onlangs afgesloten klimaatakkoord, en de doelen die behaald moete
 
 Zodoende is aan ons gevraagd een model (of een onderling samenhangend aantal modellen) aan te leveren. Dit kan dan gebruikt worden om verschillende, geautomatiseerde sluizen te realiseren.
 
-Zie hier een referentie naar latex Companion~\cite{latexcompanion} en nog een naar Einstein~\cite{einstein}\ldots 
 
 \clearpage %====================================================================
 \section{Doelstelling}
@@ -104,7 +103,7 @@ In de kamer moet minimaal ruimte zijn voor een plezier boot ca.10m, maar dit is 
 
 \clearpage
 
-\section{Requirements} %Requirements van het te bouwen systeem
+\section{Eisen} %Requirements van het te bouwen systeem
 Het literatuur onderzoek kan gebruikt worden om requirements op te stelling. Om binnen de scope van het modelleren te blijven zullen hier alleen requirements genoemd worden met betrekking tot software. De requirements zijn als volgt:
 \begin{itemize}
 
@@ -243,8 +242,12 @@ Door(1).Open $\rightarrow$ Door.(1).Closed\\
 
 \item Nadat de waterpomp is aangezet moet hij ook weer uitgaan zodat het water niet te hoog of te laag komt. Dus als hij uit de "'Idle"' state komt dan moet hij daar weer in terug komen.
 {\center
-!WaterPump.Idle() $\rightarrow$ WaterPump.Idle()
+!WaterPump.Idle() $\rightarrow$ WaterPump.Idle()\\
 }
+\vskip0.5cm
+Al deze querries zijn {\color{red}rood} uit de verificatie gekomen. Dit betekent niet dat het model per definitie slecht is. Voor deze querries om geslaagd uit de verificatie te komen moet het model op vrijwel elke locatie gebruik maken van tijd. Dit is voor ons model niet van toepassing, hierdoor zullen alle verificatie pogingen falen.
+
+Om deze querries succesvol te verifieren zullen alle componenten in het model gebruik moeten maken van een klok, of commited states.
 
 \end{itemize}
 
