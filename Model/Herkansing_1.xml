@@ -534,7 +534,31 @@ system Main, Door, WaterSensor, WaterPump, TrafficLight, Queue;
 			<comment></comment>
 		</query>
 		<query>
+			<formula></formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>Door(1).Closing --&gt; TrafficLight(1).Red</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>Door(1).Opening --&gt; TrafficLight(1).Red</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>Door(0).Closing --&gt; TrafficLight(0).Red</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>A[] (Door(0).Opening &amp;&amp; TrafficLight(0).Red)</formula>
+			<comment></comment>
+		</query>
+		<query>
 			<formula>A[] not (TrafficLight(0).Green &amp;&amp; TrafficLight(1).Green)</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula></formula>
 			<comment></comment>
 		</query>
 		<query>
@@ -583,6 +607,14 @@ system Main, Door, WaterSensor, WaterPump, TrafficLight, Queue;
 		</query>
 		<query>
 			<formula></formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>TrafficLight(0).Green --&gt; Door(0).Open</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>A[] (TrafficLight(0).Green &amp;&amp; Door(0).Open)</formula>
 			<comment></comment>
 		</query>
 	</queries>
