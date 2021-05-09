@@ -7,7 +7,7 @@ clock TimeElapsed;
 typedef int[0,10] id_i;
 
 // waterNiveau
-int[0,12] waterLevel = 3;
+int[0,12] waterLevel = 2;
 int[0,5] waterLevelLow = 2;
 int[5,10] waterLevelHigh = 10;
 
