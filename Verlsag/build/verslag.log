@@ -1,12 +1,12 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.3) (preloaded format=pdflatex 2021.4.6)  27 APR 2021 19:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.5.8)  8 MAY 2021 23:37
 entering extended mode
 **./verslag.tex
 (verslag.tex
 LaTeX2e <2020-10-01> patch level 4
-L3 programming layer <2021-02-18>
-(D:\Users\jayde\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+L3 programming layer <2021-02-18> xparse <2020-03-03>
+(C:\Users\Arjan\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
 Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
-(D:\Users\jayde\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
+(C:\Users\Arjan\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
 File: size10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
 )
 \c@part=\count179
@@ -21,40 +21,40 @@ File: size10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
 \belowcaptionskip=\skip48
 \bibindent=\dimen138
 )
-(D:\Users\jayde\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+(C:\Users\Arjan\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
 
-(D:\Users\jayde\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+(C:\Users\Arjan\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks15
 )
-(D:\Users\jayde\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+(C:\Users\Arjan\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
 Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
 
-(D:\Users\jayde\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+(C:\Users\Arjan\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(D:\Users\jayde\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+(C:\Users\Arjan\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
 fg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 105.
 
-(D:\Users\jayde\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+(C:\Users\Arjan\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
 File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen139
 \Gin@req@width=\dimen140
-) (D:\Users\jayde\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
-Package: babel 2021/03/24 3.56 The Babel package
+) (C:\Users\Arjan\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+Package: babel 2021/01/26 3.53 The Babel package
 
-(D:\Users\jayde\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.def
-File: babel.def 2021/03/24 3.56 Babel common definitions
+(C:\Users\Arjan\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.def
+File: babel.def 2021/01/26 3.53 Babel common definitions
 \babel@savecnt=\count187
 \U@D=\dimen141
 \l@babelnohyphens=\language79
 
-(D:\Users\jayde\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+(C:\Users\Arjan\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
 \bbl@readstream=\read2
 )
 \bbl@dirlevel=\count188
@@ -62,24 +62,24 @@ File: babel.def 2021/03/24 3.56 Babel common definitions
 *************************************
 * Local config file bblopts.cfg used
 *
-(D:\Users\jayde\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
+(C:\Users\Arjan\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
 File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
  babel
 )
-(D:\Users\jayde\AppData\Local\Programs\MiKTeX\tex/latex/babel-dutch\dutch.ldf
+(C:\Users\Arjan\AppData\Local\Programs\MiKTeX\tex/latex/babel-dutch\dutch.ldf
 Language: dutch 2020/10/29 v3.8j Dutch support from the babel system
 Package babel Info: Making " an active character on input line 127.
 ))
-(D:\Users\jayde\AppData\Local\Programs\MiKTeX\tex/latex/latex-tools\verbatim.st
+(C:\Users\Arjan\AppData\Local\Programs\MiKTeX\tex/latex/latex-tools\verbatim.st
 y
 Package: verbatim 2020-07-07 v1.5u LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks16
 \verbatim@line=\toks17
 \verbatim@in@stream=\read3
-) (D:\Users\jayde\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+) (C:\Users\Arjan\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 
-(D:\Users\jayde\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+(C:\Users\Arjan\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
@@ -93,9 +93,9 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
-(D:\Users\jayde\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+(C:\Users\Arjan\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
 tex.def
-File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
+File: l3backend-pdftex.def 2021-02-18 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count189
 \l__pdf_internal_box=\box47
 ) (verslag.aux)
@@ -116,7 +116,7 @@ LaTeX Font Info:    ... okay on input line 8.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
 
-(D:\Users\jayde\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
+(C:\Users\Arjan\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count190
@@ -131,24 +131,20 @@ ii
 \makeMPintoPDFobject=\count195
 \everyMPtoPDFconversion=\toks19
 )
-(D:\Users\jayde\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
+(C:\Users\Arjan\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
 ase.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
-
-(D:\Users\jayde\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
-fg
-File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
-))
+)
 <logohr.png, id=1, 255.20343pt x 255.20343pt>
 File: logohr.png Graphic file (type png)
 <use logohr.png>
-Package pdftex.def Info: logohr.png  used on input line 28.
+Package pdftex.def Info: logohr.png  used on input line 31.
 (pdftex.def)             Requested size: 113.81102pt x 113.81244pt.
  [1
 
-{C:/Users/jayde/AppData/Local/MiKTeX/pdftex/config/pdftex.map} <./logohr.png>] 
+{C:/Users/Arjan/AppData/Local/MiKTeX/pdftex/config/pdftex.map} <./logohr.png>] 
 (verslag.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 5.
@@ -160,40 +156,45 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
  [1]
 
-LaTeX Warning: Citation `latexcompanion' on page 2 undefined on input line 43.
+LaTeX Warning: Citation `latexcompanion' on page 2 undefined on input line 46.
 
 
-LaTeX Warning: Citation `einstein' on page 2 undefined on input line 43.
+LaTeX Warning: Citation `einstein' on page 2 undefined on input line 46.
 
 [2
 
 ] [3
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 69--73
+Underfull \hbox (badness 10000) in paragraph at lines 72--76
 
  []
 
 LaTeX Font Info:    Font shape `OT1/cmss/m/it' in size <10> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 80.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 83.
 [4
 
-] [5] [6
+] [5]
+LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 
+141.
+ (C:\Users\Arjan\AppData\Local\Programs\MiKTeX\tex/latex/base\ts1cmss.fd
+File: ts1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+) [6
 
-] [7
+] [7] [8
 
-] [8] [9
+] [9] [10
 
-] [10
+] [11
 
 ]
 No file verslag.bbl.
 
-Underfull \hbox (badness 10000) in paragraph at lines 266--269
+Underfull \hbox (badness 10000) in paragraph at lines 284--287
 
  []
 
-[11
+[12
 
 
 ] (verslag.aux)
@@ -202,27 +203,29 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 2501 strings out of 479321
- 36162 string characters out of 2856584
- 349393 words of memory out of 3000000
- 19972 multiletter control sequences out of 15000+600000
- 407120 words of font info for 39 fonts, out of 8000000 for 9000
+ 2513 strings out of 479334
+ 36735 string characters out of 2857085
+ 350151 words of memory out of 3000000
+ 19973 multiletter control sequences out of 15000+200000
+ 407461 words of font info for 40 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,5n,74p,488b,191s stack positions out of 5000i,500n,10000p,200000b,80000s
- <C:\Users\jayde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
-1000.pk><D:/Users/jayde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
-ts/cm/cmbx10.pfb><D:/Users/jayde/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmbx12.pfb><D:/Users/jayde/AppData/Local/Programs/MiKTeX/fonts/t
-ype1/public/amsfonts/cm/cmmi10.pfb><D:/Users/jayde/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Users/jayde/AppData/Local/Progra
-ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><D:/Users/jayde/AppData/Loc
-al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><D:/Users/jayde/
-AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi10.pfb><D:/Us
-ers/jayde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.p
-fb>
-Output written on verslag.pdf (12 pages, 128385 bytes).
+ 68i,5n,74p,488b,191s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\Arjan\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcss
+1000.pk> <C:\Users\Arjan\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
+0\tcrm1000.pk><C:/Users/Arjan/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+amsfonts/cm/cmbx10.pfb><C:/Users/Arjan/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Arjan/AppData/Local/Programs/MiKTeX/f
+onts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Arjan/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Arjan/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/Arjan/AppDa
+ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Users/
+Arjan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi10.pfb>
+<C:/Users/Arjan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
+sy10.pfb>
+Output written on "C:\Users\Arjan\Downloads\TinLabAA-main (3)\TinLabAA-main\Ver
+lsag\build\verslag.pdf" (13 pages, 130593 bytes).
 PDF statistics:
- 81 PDF objects out of 1000 (max. 8388607)
+ 90 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -36,7 +36,7 @@ chan queueChan[q_id];
 int[0,maxBoatId] sharedBoat;
 
 // trafficLight
-const int maxLights = 2;
+const int maxLights = 3;
 typedef int[0, maxLights - 1] l_id;
 
 chan lightOn[l_id], lightOff[l_id];
@@ -118,6 +118,7 @@ int[0, maxBoatId] activeBoatId;</declaration>
 			<source ref="id0"/>
 			<target ref="id4"/>
 			<label kind="guard" x="484" y="-153">activeBoatId == 0</label>
+			<label kind="synchronisation" x="484" y="-136">lightOff[2]!</label>
 			<nail x="476" y="-68"/>
 		</transition>
 		<transition>
@@ -140,13 +141,15 @@ int[0, maxBoatId] activeBoatId;</declaration>
 			<source ref="id2"/>
 			<target ref="id8"/>
 			<label kind="guard" x="-935" y="-153">activeBoatId == 0</label>
+			<label kind="synchronisation" x="-935" y="-136">lightOff[2]!</label>
 			<nail x="-816" y="-68"/>
 		</transition>
 		<transition>
 			<source ref="id4"/>
 			<target ref="id0"/>
-			<label kind="guard" x="357" y="-246">toHigh</label>
-			<label kind="assignment" x="357" y="-229">toHigh := false</label>
+			<label kind="guard" x="357" y="-255">toHigh</label>
+			<label kind="synchronisation" x="357" y="-221">lightOn[2]!</label>
+			<label kind="assignment" x="357" y="-238">toHigh := false</label>
 			<nail x="340" y="-204"/>
 		</transition>
 		<transition>
@@ -161,6 +164,7 @@ int[0, maxBoatId] activeBoatId;</declaration>
 			<source ref="id8"/>
 			<target ref="id2"/>
 			<label kind="guard" x="-783" y="-238">toLow</label>
+			<label kind="synchronisation" x="-782" y="-204">lightOn[2]!</label>
 			<label kind="assignment" x="-782" y="-221">toLow := false</label>
 			<nail x="-688" y="-204"/>
 		</transition>
@@ -236,32 +240,6 @@ int[0, maxBoatId] activeBoatId;</declaration>
 		</transition>
 	</template>
 	<template>
-		<name>AntiFreeze</name>
-		<declaration>clock E, t;
-double P;
-</declaration>
-		<location id="id10" x="85" y="85">
-		</location>
-		<location id="id11" x="85" y="85">
-		</location>
-		<location id="id12" x="85" y="85">
-			<label kind="invariant" x="76" y="102">10</label>
-			<label kind="exponentialrate" x="75" y="119">E==p</label>
-		</location>
-		<location id="id13" x="85" y="85">
-		</location>
-		<location id="id14" x="85" y="85">
-		</location>
-		<init ref="id12"/>
-		<transition>
-			<source ref="id14"/>
-			<target ref="id10"/>
-			<label kind="assignment" x="25" y="-25">p=random(1.0)</label>
-			<nail x="-8" y="8"/>
-			<nail x="153" y="8"/>
-		</transition>
-	</template>
-	<template>
 		<name>Door</name>
 		<parameter>d_id id</parameter>
 		<declaration>clock d;
@@ -269,55 +247,55 @@ double P;
 const int doorTime = 60;
 
 int[0, 10] doorPos = 0;</declaration>
-		<location id="id15" x="-306" y="-76">
+		<location id="id10" x="-306" y="-76">
 			<name x="-374" y="-93">Closing</name>
 			<committed/>
 		</location>
-		<location id="id16" x="-170" y="-195">
+		<location id="id11" x="-170" y="-195">
 			<name x="-161" y="-229">Open</name>
 		</location>
-		<location id="id17" x="-34" y="-68">
+		<location id="id12" x="-34" y="-68">
 			<name x="-17" y="-85">Opening</name>
 			<committed/>
 		</location>
-		<location id="id18" x="-170" y="60">
+		<location id="id13" x="-170" y="60">
 			<name x="-230" y="68">Closed</name>
 		</location>
-		<init ref="id18"/>
+		<init ref="id13"/>
 		<transition>
-			<source ref="id15"/>
-			<target ref="id15"/>
+			<source ref="id10"/>
+			<target ref="id10"/>
 			<label kind="guard" x="-476" y="-102">doorPos &gt; 1</label>
 			<label kind="assignment" x="-476" y="-85">doorPos--</label>
 			<nail x="-391" y="-153"/>
 			<nail x="-391" y="-8"/>
 		</transition>
 		<transition>
-			<source ref="id17"/>
-			<target ref="id17"/>
+			<source ref="id12"/>
+			<target ref="id12"/>
 			<label kind="guard" x="68" y="-85">doorPos &lt; 9</label>
 			<label kind="assignment" x="68" y="-68">doorPos++</label>
 			<nail x="43" y="0"/>
 			<nail x="43" y="-136"/>
 		</transition>
 		<transition>
-			<source ref="id15"/>
-			<target ref="id18"/>
+			<source ref="id10"/>
+			<target ref="id13"/>
 			<label kind="guard" x="-306" y="17">doorPos &lt;= 1</label>
 		</transition>
 		<transition>
-			<source ref="id16"/>
-			<target ref="id15"/>
+			<source ref="id11"/>
+			<target ref="id10"/>
 			<label kind="synchronisation" x="-306" y="-153">closing[id]?</label>
 		</transition>
 		<transition>
-			<source ref="id17"/>
-			<target ref="id16"/>
+			<source ref="id12"/>
+			<target ref="id11"/>
 			<label kind="guard" x="-136" y="-187">doorPos &gt;= 9</label>
 		</transition>
 		<transition>
-			<source ref="id18"/>
-			<target ref="id17"/>
+			<source ref="id13"/>
+			<target ref="id12"/>
 			<label kind="synchronisation" x="-102" y="17">opening[id]?</label>
 		</transition>
 	</template>
@@ -379,12 +357,12 @@ int exitQueue() {
     }
 }
 </declaration>
-		<location id="id19" x="-408" y="34">
+		<location id="id14" x="-408" y="34">
 		</location>
-		<init ref="id19"/>
+		<init ref="id14"/>
 		<transition>
-			<source ref="id19"/>
-			<target ref="id19"/>
+			<source ref="id14"/>
+			<target ref="id14"/>
 			<label kind="guard" x="-458" y="-102">!isFull()</label>
 			<label kind="assignment" x="-459" y="-85">enterQueue()</label>
 			<nail x="-399" y="17"/>
@@ -392,8 +370,8 @@ int exitQueue() {
 			<nail x="-476" y="-68"/>
 		</transition>
 		<transition>
-			<source ref="id19"/>
-			<target ref="id19"/>
+			<source ref="id14"/>
+			<target ref="id14"/>
 			<label kind="synchronisation" x="-476" y="136">queueChan[t]!</label>
 			<label kind="assignment" x="-476" y="153">sharedBoat := exitQueue()</label>
 			<nail x="-476" y="136"/>
@@ -402,71 +380,71 @@ int exitQueue() {
 	</template>
 	<template>
 		<name>WaterPump</name>
-		<location id="id20" x="-144" y="0">
+		<location id="id15" x="-144" y="0">
 			<name x="-221" y="-17">PumpOut</name>
 		</location>
-		<location id="id21" x="144" y="0">
+		<location id="id16" x="144" y="0">
 			<name x="161" y="-17">PumpIn</name>
 		</location>
-		<location id="id22" x="0" y="0">
+		<location id="id17" x="0" y="0">
 			<name x="-10" y="-34">Idle</name>
 		</location>
-		<init ref="id22"/>
+		<init ref="id17"/>
 		<transition>
-			<source ref="id20"/>
-			<target ref="id20"/>
+			<source ref="id15"/>
+			<target ref="id15"/>
 			<label kind="synchronisation" x="-297" y="17">waterDown?</label>
 			<nail x="-221" y="68"/>
 			<nail x="-221" y="-68"/>
 		</transition>
 		<transition>
-			<source ref="id21"/>
-			<target ref="id21"/>
+			<source ref="id16"/>
+			<target ref="id16"/>
 			<label kind="synchronisation" x="229" y="17">waterUp?</label>
 			<nail x="221" y="68"/>
 			<nail x="221" y="-59"/>
 		</transition>
 		<transition>
-			<source ref="id20"/>
-			<target ref="id22"/>
+			<source ref="id15"/>
+			<target ref="id17"/>
 			<label kind="synchronisation" x="-126" y="21">pumpOff?</label>
 			<nail x="-68" y="76"/>
 		</transition>
 		<transition>
-			<source ref="id21"/>
-			<target ref="id22"/>
+			<source ref="id16"/>
+			<target ref="id17"/>
 			<label kind="synchronisation" x="94" y="17">pumpOff?</label>
 			<nail x="76" y="68"/>
 		</transition>
 		<transition>
-			<source ref="id22"/>
-			<target ref="id20"/>
+			<source ref="id17"/>
+			<target ref="id15"/>
 			<label kind="synchronisation" x="-110" y="-93">pumpDown?</label>
 			<nail x="-68" y="-76"/>
 		</transition>
 		<transition>
-			<source ref="id22"/>
-			<target ref="id21"/>
+			<source ref="id17"/>
+			<target ref="id16"/>
 			<label kind="synchronisation" x="42" y="-93">pumpUp?</label>
 			<nail x="68" y="-76"/>
 		</transition>
 	</template>
 	<template>
 		<name>WaterSensor</name>
-		<location id="id23" x="0" y="0">
+		<location id="id18" x="0" y="0">
 		</location>
-		<init ref="id23"/>
+		<init ref="id18"/>
 		<transition>
-			<source ref="id23"/>
-			<target ref="id23"/>
+			<source ref="id18"/>
+			<target ref="id18"/>
 			<label kind="synchronisation" x="-42" y="59">waterDown!</label>
 			<label kind="assignment" x="-41" y="76">waterLevel--</label>
 			<nail x="59" y="76"/>
 			<nail x="-59" y="76"/>
 		</transition>
 		<transition>
-			<source ref="id23"/>
-			<target ref="id23"/>
+			<source ref="id18"/>
+			<target ref="id18"/>
 			<label kind="synchronisation" x="-34" y="-93">waterUp!</label>
 			<label kind="assignment" x="-42" y="-76">waterLevel++</label>
 			<nail x="59" y="-76"/>
@@ -477,31 +455,25 @@ int exitQueue() {
 		<name>TrafficLight</name>
 		<parameter>l_id light</parameter>
 		<declaration>clock l;</declaration>
-		<location id="id24" x="93" y="-76">
-			<name x="83" y="-110">Orange</name>
-		</location>
-		<location id="id25" x="-77" y="-76">
+		<location id="id19" x="-77" y="-76">
 			<name x="-87" y="-110">Green</name>
 		</location>
-		<location id="id26" x="-247" y="-76">
+		<location id="id20" x="-247" y="-76">
 			<name x="-257" y="-110">Red</name>
 		</location>
-		<init ref="id26"/>
+		<init ref="id20"/>
 		<transition>
-			<source ref="id24"/>
-			<target ref="id26"/>
-			<label kind="synchronisation" x="-229" y="8">lightOff[light]?</label>
-			<nail x="93" y="26"/>
+			<source ref="id19"/>
+			<target ref="id20"/>
+			<label kind="guard" x="-212" y="-8">l &gt;= 30</label>
+			<label kind="synchronisation" x="-212" y="8">lightOff[light]?</label>
+			<nail x="-76" y="-59"/>
+			<nail x="-76" y="25"/>
 			<nail x="-247" y="26"/>
 		</transition>
 		<transition>
-			<source ref="id25"/>
-			<target ref="id24"/>
-			<label kind="guard" x="-34" y="-110">l &gt;= 30</label>
-		</transition>
-		<transition>
-			<source ref="id26"/>
-			<target ref="id25"/>
+			<source ref="id20"/>
+			<target ref="id19"/>
 			<label kind="synchronisation" x="-229" y="-93">lightOn[light]?</label>
 			<label kind="assignment" x="-229" y="-76">l := 0</label>
 		</transition>
