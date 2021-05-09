@@ -2,8 +2,9 @@
 \documentclass{article}
 \usepackage{graphicx} 
 \usepackage[dutch]{babel}
-\usepackage{verbatim} % for multi line comments
-\usepackage{xcolor}
+\usepackage{verbatim} % For multi line comments
+\usepackage{xcolor} 
+\usepackage{hyperref} % For links
 
 \begin{document}
 \graphicspath{{../Images/}}
@@ -59,6 +60,23 @@ Door het menselijke toedoen te schrappen kan de veiligheid ook verbeterd worden.
 \clearpage %====================================================================
 \section{Literatuur onderzoek} %resultaten literatuur onderzoek
 
+\subsection{Soorten sluizen}
+Uiteraard is er niet een soort sluis. Er zijn verschillende sluizen, elk met een andere toepassing voor verschillende situaties.
+\begin{itemize}
+\item Uitwateringsluis
+\item Inlaatsluis
+\item Keersluizen
+\item Spuisluizen
+\item Schutsluizen
+\item Inundantiesluizen
+\item Damsluizen
+\item Keersluizen
+\end{itemize}
+De type sluis die wij hebben gekozen te modelleren is een schutsluis. Het verslag zal zich voortzetten met als onderwerp een schutsluis modelleren.
+
+\subsubsection{Onderdelen}
+Om een sluis correct te laten functioneren zijn er verschillende onderdelen nodig, die elk hun taak binnen het systeem moeten verrichten. De welbekende onderdelen zijn sluisdeuren,  sluiskamer en een waterpomp die het waterpeil regelt. Een belangrijk onderdeel voor binnenvarende schepen zijn drijf bolders. Schippers leggen hier hun schepen aan vast zodat ze op een plek drijven tijdens het schutten. Verder is er nog een mens aanwezig die de sluis bedient, maar aangezien het vraagstuk gaat om een automatische sluis zal er geen persoon of bedienings panelen worden gebruikt.
+
 \subsection{Veiligheid}
 Om ervoor te zorgen dat een sluis veilig in gebruik genomen kan worden moet het aan een aantal veiligheidseisen voldoen. Een veilige sluis voldoet tenminste aan de volgende eisen.
 Aan welke veiligheidseisen moet een sluis zich voldoen.
@@ -93,17 +111,17 @@ Ijsvorming kan een probleem vormen voor een sluis. Ijs kan ervoor zorgen dat de 
 \item Hefdeuren zijn gevoelig voor aanhechting van ijs. Aangehecht ijs kan op onder doorvarende schepen kan vallen. Ook kan de deur vastlopen of dusdanig zwaar raken dat de deur te zwaar wordt om te heffen.
 \end{itemize}
 
-Er zijn natuurlijk ook middelen om de sluis ijsvrij te maken. Deze middelen zijn: luchtbellenscherm, kasblaasinstallatie, verwarringselementen of een gesloten constructie.
+Er zijn natuurlijk ook middelen om de sluis ijsvrij te maken. Deze middelen zijn: luchtbellenscherm, kasblaasinstallatie, verwarringselementen of een geheel gesloten constructie van de sluis.
+Doordat deze ijs-bestrijdings middelen niet een directe invloed hebben op de handelingen van de sluis, hebben we besloten deze dan ook niet te moddeleren.
 
 \vskip0.5cm
 
-\section{\large\color{red}\textbf{KEUZE MAKEN WEL OF NIET MODELLEREN}}
-
 \subsection{Capaciteit}
-De sluiscapaciteit is het aantal schepen dat tegelijk geschut kan worden. Met een hogere sluiscapaciteit kunnen er dus meer schepen tegelijk de sluis in.
+De capaciteit van een sluis kan op twee manieren beschreven worden. De eerste en meest belangrijke voor vele schippers is de hoeveelheid schepen die in de sluis passen.
+Daarnaast kan er voor capaciteit ook naar het volume van het water gekeken worden. Hoeveel water past er in de sluis.
+Als we dan naar efficiëntie kijken, dan spreken we over de snelheid waarmee het water niveau verandert kan worden. Oftewel de capaciteit van bijv. een waterpomp.
 
-Wat is de capaciteit van een sluis? Hoeveelheid water wat kan worden geaccepteerd en overpomp snelheid.\\
-In de kamer moet minimaal ruimte zijn voor een plezier boot circa 10m, maar dit is niet relevant voor het modelleren.
+Voor het modelleren is het echter niet van belang wat de capaiteit van een waterpomp is of hoeveel water er in de sluis kan. De capaciteit van het aantal schepen is wel van belang. Als er meerdere schepen moet de sluis zijn deuren niet sluiten als nog niet alle aanwezige schepen binnen zijn. Hetzelfde geld voor wanneer de schepen de sluis willen verlaten.
 
 \clearpage
 
@@ -145,24 +163,23 @@ Het volgende onderwerp valt buiten de scope van het modelleren. Hier hoeft dus g
 
 \vskip2cm
 
-\section{\Large\color{red} \textbf{TO BE FINISHED}}
 
 \clearpage %====================================================================
 \section{Verificatie}
 \begin{itemize}
 \item We controleren of er geen deadlock in het systeem zit. Als dit wel het geval is kan het systeem vastlopen en is er menselijke interventie nodig om het probleem te verhelpen.
 {\center A[ ] not deadlock.\\}
-\vskip0.3cm
-odel zich geen deadlock bevindt.
-\vskip0.5cm
 
-De uitkomst van deze verificatie is {\color{green}{groen}}. Dit betekend dat in het m
+
+De uitkomst van deze verificatie is {\color{green}{groen}}. Dit betekend dat in het model zich geen deadlock bevindt.
+
+
 \item Twee deuren mogen op geen enkel moment samen open zijn. Een contstante stroming van hoog naar laag is niet gewenst in een sluis. Hiervoor controleren we op de "'open"' states van beide deuren actief zijn. Daarnaast moet er gecontroleerd worden of er geen situatie bestaat waarin beide deuren tegelijk opengaan.
 {\center 
 A[ ] not (Door(0).Open == true \&\& Door(1).Open == true)\\
 A[ ] not (Door(0).Opening == true \&\& Door(1).Opening == true)\\
 }
-\vskip0.3cm
+
 
 Het resultaat van de twee querries is {\color{green}{groen}}. Er is dus geen situatie mogelijk waarin beide deuren open staan.
 
@@ -174,10 +191,10 @@ A[ ] not (Door(1).Opening == true \&\& Door(0).Open == true)\\
 A[ ] not (Door(1).Opening == true \&\& Door(0).Closing == true)\\
 A[ ] not (Door(0).Opening == true \&\& Door(1).Closing == true)\\
 }
-\vskip0.3cm
+
 
 Als er een situatie zoals hierboven beschreven zou plaatsvinden, dan is de kans groot dat er twee open deuren zijn geweest of zullen volgen. Met de kennis eerder verkregen dat er geen moment is waar er twee deuren open zijn, is het geen verrassing dat de querries ook met een {\color{green}{groene}} status uit de verificatie komen.
-\vskip0.5cm
+
 
 \item Soort gelijken situaties kunnen we testen voor de stoplichten, zoals beide stoplichten op groen of oranje.
 {\center
@@ -189,7 +206,7 @@ A[ ] not(TrafficLight(0).Orange == true \&\& TrafficLight(1).Green == true)\\
 }
 \vskip0.3cm
 Deze verificatie geven aan of er niet aan beide kanten een boot toegelaten wordt. Ook deze verificatie zijn {\color{green}{groen}} afgesloten.
-\vskip0.5cm
+
 
 \item Het is belangrijk dat de stoplichten pas op groen gaan als de deur open is, vooral om schade te voorkomen. Dit wordt getest voor beide kanten van de sluis.
 {\center
@@ -200,50 +217,74 @@ A[ ] not (TrafficLight(1).Green == true \&\& Door(1).Closed == true)\\
 A[ ] not (TrafficLight(1).Orange == true \&\& Door(1).Closed == true)\\
 }
 Het model volgt de volgorde eerst deur open, daarna de stoplichten aansturen, het is dan ook niet raar dat deze verificatie {\color{green}{groen}} is afgesloten.
-\vskip0.5cm
+
 
 \item Als een boot de sluis binnen gaat kan het niet zo zijn dat de boot de hoge en de lage kant als bestemming heeft. Hiervoor testen we of er een situatie is waarin de bestemming beide kanten is.
 {\center
 A[ ] not (Main.toHigh == true \&\& Main.toLow == true)\\
 }
-\vskip0.3cm
+
 
 Deze verificatie is met {\color{green}{groen}} uit de verificatie gekomen.
-\vskip0.5cm
+
 
 \item Wanneer er een deur open is moet de pomp uistaan. Anders wordt er water bij of weggepompt met een open verbinding naar het kanaal, dat heeft geen zin en is een verspilling van energie.
 {\center
 A[ ] not (WaterPump.PumpIn == true \&\& !Door(0).Closed == true)\\
 A[ ] not (WaterPump.PumpIn == true \&\& !Door(1).Closed == true)\\
-\vskip0.2cm
+\vskip0.1cm
 A[ ] not (WaterPump.PumpInOut == true \&\& !Door(0).Closed == true)\\
 A[ ] not (WaterPump.PumpInOut == true \&\& !Door(1).Closed == true)\\
 }
-\vskip0.3cm
+
 
 Deze querries zijn met {\color{green}{groen}} uit de verificatie gekomen. Dat betekent dat de pompen altijd uit staan als er een open verbinding is met het water buiten de sluis. Ofwel als de pomp aan staat zijn de sluisdeuren altijd dicht.
+
+\item De schepen mogen niet in contact komen met bewegende onderdelen van de sluis, de deuren. Daarom zullen de stoplichten op rood moeten staan als de deuren in beweging zijn, zodat de schepen buiten de sluis op afstand blijven.
+
+{\center
+A[ ] (Door(1).Closing \&\& TrafficLight(1).Red)\\
+A[ ] (Door(1).Opening \&\& TrafficLight(1).Red)\\
+A[ ] (Door(0).Closing \&\& TrafficLight(0).Red)\\
+A[ ] (Door(0).Opening \&\& TrafficLight(0).Red)\\
+}
+Deze querries zijn {\color{red}rood} uit de verificatie gekomen. 
 \end{itemize}
 
 
+
+
+
 \clearpage %====================================================================
-\section{\Large\color{red} \textbf{TO BE FINISHED}}
 \subsection{Liveness}
 \begin{itemize}
 
-\item Nadat de deuren zijn geopend moeten ze een keer gesloten worden. Zodat derest van de cyclus veilig door kan gaan.
+\item Nadat de deuren zijn geopend moeten ze gesloten worden. Zodat derest van
+de cyclus veilig kan verlopen. In de praktijk is de deur ook al open als hij op
+een kier staat. Daarom wordt er gecontrolleerd op wanneer de deur niet meer
+in zijn closed state staat.
+
 {\center
 Door(0).Open $\rightarrow$ Door.(0).Closed\\
 Door(1).Open $\rightarrow$ Door.(1).Closed\\
 }
- %Als die verificatie zo werkt
-\vskip0.5cm
-\item Een schip dat de sluis in gaat, zal altijd de sluis ook weer uitgaan.
+\item Een schip dat de sluis in gaat moet de sluis verlaten. Dus als de "'activeBoatId"' 1 of hoger is dan moet hij uiteindelijk weer nul worden, ongeacht de richting waar de boot naartoe wilt.
+
 {\center
-(activeBoatId $>$ 0) $\rightarrow$ (activeBoatId == 0)\\
+(Main.activeBoatId != 0) $\rightarrow$ (Main.activeBoatId == 0)\\
 }
+
+\item Nadat de waterpomp is aangezet moet hij ook weer uitgaan zodat het water niet te hoog of te laag komt. Dus als hij uit de "'Idle"' state komt dan moet hij daar weer in terug komen.
+{\center
+!WaterPump.Idle() $\rightarrow$ WaterPump.Idle()\\
+}
+\vskip0.5cm
+Al deze querries zijn {\color{red}rood} uit de verificatie gekomen. Dit betekent niet dat het model per definitie slecht is. Voor deze querries om geslaagd uit de verificatie te komen moet het model op vrijwel elke locatie gebruik maken van tijd. Dit is voor ons model niet van toepassing, hierdoor zullen alle verificatie pogingen falen.
+
+Om deze querries succesvol te verifieren zullen alle componenten in het model gebruik moeten maken van een klok, of commited states.
+
 \end{itemize}
 
-\vskip2cm
 
 
 \clearpage %====================================================================
@@ -284,6 +325,10 @@ A set of lock gear to empty or fill the chamber as required. This is usually a s
 Rijkswaterstaat (2017).
 \textit{Richtlijnen Vaarwegen 2017}\\
 % Editors. Publisher.
+
+\bibitem{soortensluizen}
+\url{https://www.sluizenenstuwen.nl/soorten_sluizen_en_stuwen.asp}
+
 
 \end{thebibliography}
 

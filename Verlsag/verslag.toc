@@ -1,18 +1,17 @@
 \babel@toc {dutch}{}
-\contentsline {section}{\numberline {1}Inleiding}{2}{}%
-\contentsline {section}{\numberline {2}Doelstelling}{3}{}%
-\contentsline {section}{\numberline {3}Literatuur onderzoek}{4}{}%
-\contentsline {subsection}{\numberline {3.1}Veiligheid}{4}{}%
-\contentsline {subsubsection}{\numberline {3.1.1}Deuren}{4}{}%
-\contentsline {subsubsection}{\numberline {3.1.2}Invloed van wind}{4}{}%
-\contentsline {subsubsection}{\numberline {3.1.3}Vorming van ijs}{4}{}%
-\contentsline {section}{\numberline {4}\large \color {red}\textbf {KEUZE MAKEN WEL OF NIET MODELLEREN}}{5}{}%
-\contentsline {subsection}{\numberline {4.1}Capaciteit}{5}{}%
-\contentsline {section}{\numberline {5}Requirements}{6}{}%
-\contentsline {section}{\numberline {6}Specificaties}{6}{}%
-\contentsline {section}{\numberline {7}\Large \color {red} \textbf {TO BE FINISHED}}{6}{}%
-\contentsline {section}{\numberline {8}Verificatie}{7}{}%
-\contentsline {section}{\numberline {9}\Large \color {red} \textbf {TO BE FINISHED}}{9}{}%
-\contentsline {subsection}{\numberline {9.1}Liveness}{9}{}%
-\contentsline {section}{\numberline {10}\Large \color {red} \textbf {NEW MODEL HERSCHRIJVEN}}{10}{}%
-\contentsline {section}{\numberline {11}Ontwerpen}{10}{}%
+\contentsline {section}{\numberline {1}Inleiding}{2}{section.1}%
+\contentsline {section}{\numberline {2}Doelstelling}{3}{section.2}%
+\contentsline {section}{\numberline {3}Literatuur onderzoek}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Soorten sluizen}{4}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Onderdelen}{4}{subsubsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.2}Veiligheid}{4}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Deuren}{5}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Invloed van wind}{5}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Vorming van ijs}{5}{subsubsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.3}Capaciteit}{6}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Eisen}{7}{section.4}%
+\contentsline {section}{\numberline {5}Specificaties}{7}{section.5}%
+\contentsline {section}{\numberline {6}Verificatie}{9}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Liveness}{11}{subsection.6.1}%
+\contentsline {section}{\numberline {7}\Large \color {red} \textbf {NEW MODEL HERSCHRIJVEN}}{12}{section.7}%
+\contentsline {section}{\numberline {8}Ontwerpen}{12}{section.8}%
