@@ -292,25 +292,29 @@ Om deze querries succesvol te verifieren zullen alle componenten in het model ge
 
 
 \clearpage %====================================================================
-\section{\Large\color{red} \textbf{NEW MODEL HERSCHRIJVEN}}
 \section{Ontwerpen} % Het model gemaakt in UPPAAL
 In de beginsituatie van het model zijn alle deuren gesloten en staat het waterpeil gelijk aan het lage waterpeil in het kanaal. Het model heeft één hoofdcontroller. Deze hoofdcontroller maakt alle beslissingen en heeft het uiteindelijk voor het zeggen wat er moet gaan gebeuren.
 
-Naast de hoofdcontroller zijn er nog een aantal modellen ontworpen ter ondersteuning van de hoofdcontroller. De onderdelen waarvan een model is gemaakt zijn: de deur, waterpomp, watersensor, boot/schip.
+In het meest linker en rechter deel van de hoofdcontroller worden boten naar binnen en buiten gelaten. In deze delen is er een verbinding met de stoplichten en de wachtrij gemaakt. Die zijn nodig om de schepen instructies te geven dat ze naar binnen mogen of naar buiten mogen.
 
+Een sta naarbinnen zijn de deuren. De hoofdcontroller geeft een signaal naar de deuren, tot de deuren voledig open of gesloten zijn kan er geen volgende stap gezet worden.
 
-\vskip0.5cm
+Het middelste deel bestuurd het waterniveau. De controller stuurt een signaal naar de waterpomp die zal blijven pompen tot de watersensor meet dat het water op het juiste niveau staat. de controller vergelijkt dan de huidige niveau en hoe hoog het water buiten de sluis staat. Als dit gelijk is wordt de waterpomp uit gezet en kan er een volgende transitie genomen worden.
 
-Het model van de deur heeft een heel simpel doel. Het moet aangeven of de deur open of dicht staat. Dit model heeft naast de "'open"' en "'dicht"' status ook een opening en closing status. Deze statussen geven aan dat de deur bezig is in een transitie van open naar dicht of andersom. tijdens deze transitie kunnen er bijvoorbeeld nog geen boten worden toegelaten.
+Naast de hoofdcontroller zijn er nog een aantal modellen ontworpen ter ondersteuning van de hoofdcontroller. De onderdelen waarvan een model is gemaakt zijn: deuren, waterpomp, watersensor, stoplichten en een queue.
 
-\vskip0.5cm
+\vskip0.3cm
 
-Het waterpomp model heeft 3 statussen. Zijn begin status is de Sleep status. Hierin wacht de waterpomp op een signaal van de hoofdcontroller om te beginnen met het pompen van het water. Afhankelijk van het signaal dat de waterpomp ontvangt schakeld het over op "'WaterIn"' of "'WaterOut"'. Deze statussen pompen water in of uit de sluis, wat ervoor zorgt dat het waternieuwe wordt verhoogt.
+Het model van de deur heeft een heel simpel doel. Het moet aangeven of de deur open of dicht staat. Dit model heeft naast de "'open"' en "'dicht"' status ook een "'opening"' en "'closing"' status. Deze statussen geven aan dat de deur bezig is in een transitie van open naar dicht of andersom. tijdens deze transitie kunnen er bijvoorbeeld nog geen boten worden toegelaten.
 
-Het watersensor model heeft een simpel doel. Het moet de hoogte van het waterpeil weergeven, zodat deze ook in ander modellen, met name de maincontroller, gebruikt kunnen worden.
+Het waterpomp model heeft 3 statussen. Zijn start status is de "'Idle"' status. Hierin wacht de waterpomp op een signaal van de hoofdcontroller om te beginnen met het pompen van het water. Afhankelijk van het signaal dat de waterpomp ontvangt schakeld het over op "'PumpIn"' of "'PumpOut"'. Deze statussen pompen water in of uit de sluis, wat ervoor zorgt dat het waterniveau wordt verhoogt of verlaagd.
 
-Het laatste model is die van de boot. De naam is echter een beetje tegenstrijdig met de functie van dit model. Het boot model modelleert niet een schip of de acties daarvan. Dit model heeft als die de positie van het schip weergeven.
+Het watersensor model heeft een simpel doel en dus ook een simpel model. Het geeft aan hoe hoog de waterstand is. Het bestaat uit een state met twee transities
+ Het moet de hoogte van het waterpeil weergeven, zodat deze ook in ander modellen, met name de maincontroller, gebruikt kunnen worden.
 
+De stoplichten zijn gemodelleerd in het model TrafficLight. Voor het stoplicht hebben we gekozen voor een twee lichten model, er is alleen een groen en rood licht. Als het licht in de groen status komt zal hij hier maximaal 30 seconden blijven waarna hij weer naar rood verandert.
+
+Het laatste model is die van de queue. Dit model is net als die van de watersensor erg simpel. het bestaat uit een state met twee transities. Een transitie zet een boot ID in de wachtrij, de andere haalt de eerste eruit en geeft dit nummer mee aan de hoofd controller.
 
 
 \clearpage %====================================================================
