@@ -9,6 +9,7 @@
 \contentsline {subsubsection}{\numberline {3.2.2}Invloed van wind}{5}{subsubsection.3.2.2}%
 \contentsline {subsubsection}{\numberline {3.2.3}Vorming van ijs}{5}{subsubsection.3.2.3}%
 \contentsline {subsection}{\numberline {3.3}Capaciteit}{6}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Conslusie}{6}{subsection.3.4}%
 \contentsline {section}{\numberline {4}Eisen}{7}{section.4}%
 \contentsline {section}{\numberline {5}Specificaties}{7}{section.5}%
 \contentsline {section}{\numberline {6}Verificatie}{8}{section.6}%

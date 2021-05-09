@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.3) (preloaded format=pdflatex 2021.4.6)  9 MAY 2021 17:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.3) (preloaded format=pdflatex 2021.4.6)  9 MAY 2021 18:15
 entering extended mode
 **./verslag.tex
 (verslag.tex
@@ -362,7 +362,7 @@ LaTeX Font Info:    Font shape `OT1/cmss/m/it' in size <10> not available
 ]
 No file verslag.bbl.
 
-Underfull \hbox (badness 10000) in paragraph at lines 333--336
+Underfull \hbox (badness 10000) in paragraph at lines 336--339
 
  []
 
@@ -373,40 +373,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 333--336
 
 LaTeX Warning: There were undefined references.
 
-
-Package rerunfilecheck Warning: File `verslag.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `verslag.out':
-(rerunfilecheck)             Before: DEF29581C2A0435B542C7B9A2A536E03;1849
-(rerunfilecheck)             After:  BC3A7FB9455EFF3718699119E3E0C398;1666.
+Package rerunfilecheck Info: File `verslag.out' has not changed.
+(rerunfilecheck)             Checksum: 1421C103F03B956D9AC45D27CD5B324D;1769.
  ) 
 Here is how much of TeX's memory you used:
- 9048 strings out of 479321
- 134265 string characters out of 2856584
+ 9049 strings out of 479321
+ 134284 string characters out of 2856584
  455200 words of memory out of 3000000
  26376 multiletter control sequences out of 15000+600000
- 406994 words of font info for 39 fonts, out of 8000000 for 9000
+ 407301 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,5n,74p,594b,452s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{section.8} has been referenced but does not exist
-, replaced by a fixed one
-
- <C:\Users\jayde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm10
-00.pk><D:/Users/jayde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
-/cm/cmbx10.pfb><D:/Users/jayde/AppData/Local/Programs/MiKTeX/fonts/type1/public
-/amsfonts/cm/cmbx12.pfb><D:/Users/jayde/AppData/Local/Programs/MiKTeX/fonts/typ
-e1/public/amsfonts/cm/cmr10.pfb><D:/Users/jayde/AppData/Local/Programs/MiKTeX/f
-onts/type1/public/amsfonts/cm/cmss10.pfb><D:/Users/jayde/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><D:/Users/jayde/AppData/Loc
-al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi10.pfb><D:/Users/jayde/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/User
-s/jayde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb
->
-Output written on verslag.pdf (13 pages, 145724 bytes).
+ <C:\Users\jayde\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
+1000.pk><D:/Users/jayde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmbx10.pfb><D:/Users/jayde/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmbx12.pfb><D:/Users/jayde/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmr10.pfb><D:/Users/jayde/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmss10.pfb><D:/Users/jayde/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmss12.pfb><D:/Users/jayde/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><D:/Users/jayde/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi10.pfb><D:/Us
+ers/jayde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.p
+fb><D:/Users/jayde/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
+/cmtt10.pfb>
+Output written on verslag.pdf (13 pages, 156047 bytes).
 PDF statistics:
- 194 PDF objects out of 1000 (max. 8388607)
+ 198 PDF objects out of 1000 (max. 8388607)
  33 named destinations out of 1000 (max. 500000)
  134 words of extra memory for PDF output out of 10000 (max. 10000000)
 
