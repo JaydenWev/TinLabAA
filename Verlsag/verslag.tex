@@ -61,7 +61,7 @@ Door het menselijke toedoen te schrappen kan de veiligheid ook verbeterd worden.
 \section{Literatuur onderzoek} %resultaten literatuur onderzoek
 
 \subsection{Soorten sluizen}
-Uiteraard is er niet een soort sluis. Er zijn verschillende sluizen, elk met een andere toepassing voor verschillende situaties.
+Uiteraard is er niet een soort sluis. Er zijn verschillende sluizen, elk met een andere toepassing voor verschillende situaties.\cite{soortensluizen}
 \begin{itemize}
 \item Uitwateringsluis
 \item Inlaatsluis
@@ -123,21 +123,26 @@ Als we dan naar efficiëntie kijken, dan spreken we over de snelheid waarmee het
 Voor het modelleren is het echter niet van belang wat de capaiteit van een waterpomp is of hoeveel water er in de sluis kan. De capaciteit van het aantal schepen is wel van belang. Als er meerdere schepen moet de sluis zijn deuren niet sluiten als nog niet alle aanwezige schepen binnen zijn. Hetzelfde geld voor wanneer de schepen de sluis willen verlaten.
 
 \subsection{Conslusie}
+De deuren worden uiteraard gemoddeleerd. Zonder een soort deur kan je geen sluis maken.
 Doordat deze ijs bestrijdingsmiddelen niet een directe invloed hebben op de handelingen van de sluis hebben we besloten deze dan ook niet te modeleren.
 
-{\large \color{red}Keuzes uitleggen waarom we voor iets hebben gekozen om het (op die manier) te modelleren.}
+Wij streven ernaar om het model zo modulair mogelijk te maken. Dit is dan ook de reden dat we geen rekening houden met de capaciteit van de schepen die in de sluis passen.
+
+Wind is een invloed van buitenaf. In de opdracht van de ambtenaar is beschreven dat er hier op dit moment geen rekening mee gehouden hoeft te worden.
 \clearpage
 
 \section{Eisen} %Requirements van het te bouwen systeem
 Het literatuur onderzoek kan gebruikt worden om eisen op te stelling. Om binnen de scope van het modelleren te blijven zullen hier alleen eisen genoemd worden met betrekking tot software. De eisen zijn als volgt:
 \begin{itemize}
-\item De deuren mogen niet op het zelfde moment open kunnen staan. Dat er geen enkele situatie kan voorkomen dat dit het geval is moet geverifieerd worden.
+
+\item De deuren mogen niet op het zelfde moment open kunnen staan.
+
+Er is geen blockkade meer aanwezig in de rivier waardoor er stroming kan ontstaan. Hierdoor zouden de deuren niet meer dicht kunnen.
+Dat er geen enkele situatie kan voorkomen dat dit het geval is moet geverifieerd worden.
 
 \item Een deur mag pas geopend worden als de waterhoogte binnen gelijk is aan de waterhoogte buiten.
 
-\item Er moet een rij gemodelleerd worden, wat de wachtende schepen moet voorstellen.
-
-\item De waterhoogte moet bijgehouden worden, dit geldt voor de hoge zijde van de rivier, de lage zijde van de rivier en het compartiment van de sluis.
+Als er een groot hoogte verschil is kunnen de boten van hun plek getrokken worden. Dit kan gebeuren wanneer er te veel water de sluis in of uitstroomt.
 
 \item Er is een stoplicht nodig wat aangeeft wanneer een boot de sluis binnen mag varen. Dit betreft een stoplicht aan de bovenzijde en de onderzijde. Daarnaast is er een stoplicht nodig die aangeeft wanneer een boot de sluis weer mag verlaten.
 
@@ -149,6 +154,16 @@ Het literatuur onderzoek kan gebruikt worden om eisen op te stelling. Om binnen 
 \item o De buiten stoplichten kunnen pas op groen als het stoplicht binnen in de sluis op rood staat.
 \end{description}
 
+De stoplichten zorgen voor duidelijkheid bij de schippers, voor wanneer ze van hun plek kunnen vertrekken.
+
+\item De waterhoogte moet bijgehouden worden, dit geldt voor het compartiment van de sluis, de hoge zijde en de lage zijde van de rivier.
+
+Als de hoogtes worden bijgehouden kan er rekening mee worden gehouden in het model. Dit is onder andere nodig om aan de bovenstaande eis te voldoen.
+
+\item Er moet een rij gemodelleerd worden, wat de wachtende schepen moet voorstellen.
+
+Met deze wachtrij van schepen kan worden bijgehouden of er schepen in de sluis zitten en mogelijk hoeveel schepen.
+
 \end{itemize}
 
 Het volgende onderwerp valt buiten de scope van het modelleren. Hier hoeft dus geen rekening meegehouden te worden.
@@ -159,19 +174,19 @@ Het volgende onderwerp valt buiten de scope van het modelleren. Hier hoeft dus g
 \section{Specificaties} %Specificaties van het te bouwen systeem
 
 \begin{itemize}
+
 \item Als deur A open staat, dan moet deur B dicht zijn en Vic versa.
 
-\item Een deur mag pas open als de waterhoogte aan beide zijdes gelijk is.
-
-\item Er kunnen maximaal X aantal boten wachten in de rij.
+\item Een deur mag pas open als het waterniveau binnen de sluis en buiten de deur gelijk is.
 
 \item Er is maximaal maar één stoplicht op groen.
 
 \item Deuren gaan alleen open of dicht als alle stoplichten op rood staan.
+
+\item Er kunnen maximaal X aantal boten wachten in de rij.
 \end{itemize}
 
 \vskip2cm
-
 
 \clearpage %====================================================================
 \section{Verificatie}
